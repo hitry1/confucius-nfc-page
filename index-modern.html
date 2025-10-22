@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Eastern Philosophy through Cultural Goods">
+    <title>Eastern Philosophy Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-modern.css">
+</head>
+<body>
+    <!-- 인물 선택 네비게이션 바 -->
+    <nav class="character-nav">
+        <div class="nav-container">
+            <div class="nav-tabs">
+                <a href="#confucius" class="nav-tab active" data-character="confucius">
+                    <span class="tab-icon">孔</span>
+                    <span class="tab-name" data-ko="공자" data-en="Confucius">공자</span>
+                </a>
+                <a href="#yisunsin" class="nav-tab" data-character="yisunsin">
+                    <span class="tab-icon">李</span>
+                    <span class="tab-name" data-ko="이순신" data-en="Yi Sun-sin">이순신</span>
+                </a>
+            </div>
+            <button class="lang-toggle" id="langToggle">
+                <span class="lang-ko">EN</span>
+                <span class="lang-en hidden">KO</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 공자 콘텐츠 -->
+    <div id="confucius" class="character-content active">
+        <!-- 히어로 섹션 -->
+        <header class="hero-modern">
+            <div class="hero-background">
+                <div class="gradient-overlay"></div>
+            </div>
+            <div class="hero-text">
+                <div class="character-badge">孔子</div>
+                <h1 class="hero-title">
+                    <span data-ko="공자" data-en="Confucius">공자</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span data-ko="중국 춘추시대의 위대한 사상가이자 교육자"
+                          data-en="Great Philosopher and Educator of Ancient China">
+                        중국 춘추시대의 위대한 사상가이자 교육자
+                    </span>
+                </p>
+                <div class="hero-meta">
+                    <span class="meta-item">
+                        <span data-ko="BC 551-479" data-en="551-479 BCE">BC 551-479</span>
+                    </span>
+                    <span class="meta-divider">|</span>
+                    <span class="meta-item">
+                        <span data-ko="유교 창시자" data-en="Founder of Confucianism">유교 창시자</span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="main-modern">
+            <!-- 명언 섹션 -->
+            <section class="section quote-modern">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span data-ko="오늘의 명언" data-en="Quote of Wisdom">오늘의 명언</span>
+                    </h2>
+
+                    <div class="quote-box">
+                        <div class="quote-original">學而時習之 不亦說乎</div>
+                        <div class="quote-translation">
+                            <span data-ko="학이시습지 불역설호"
+                                  data-en="Hak-i si-seup-ji bul-yeok-seol-ho">
+                                학이시습지 불역설호
+                            </span>
+                        </div>
+                        <div class="quote-meaning">
+                            <span data-ko="배우고 때때로 익히면 또한 기쁘지 아니한가"
+                                  data-en="Is it not pleasant to learn and practice what you have learned?">
+                                배우고 때때로 익히면 또한 기쁘지 아니한가
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 핵심 사상 섹션 -->
+            <section class="section philosophy-modern">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span data-ko="핵심 사상" data-en="Core Philosophy">핵심 사상</span>
+                    </h2>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">仁</div>
+                            <h3 class="card-title">
+                                <span data-ko="인(仁)" data-en="Ren (Benevolence)">인(仁)</span>
+                            </h3>
+                            <p class="card-text">
+                                <span data-ko="인간에 대한 사랑과 배려. 모든 덕의 근본이 되는 가치"
+                                      data-en="Love and care for humanity. The foundation of all virtues">
+                                    인간에 대한 사랑과 배려. 모든 덕의 근본이 되는 가치
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">禮</div>
+                            <h3 class="card-title">
+                                <span data-ko="예(禮)" data-en="Li (Propriety)">예(禮)</span>
+                            </h3>
+                            <p class="card-text">
+                                <span data-ko="사회 질서와 조화를 위한 예의와 의례"
+                                      data-en="Etiquette and rituals for social harmony">
+                                    사회 질서와 조화를 위한 예의와 의례
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">君</div>
+                            <h3 class="card-title">
+                                <span data-ko="군자(君子)" data-en="Junzi (Noble Person)">군자(君子)</span>
+                            </h3>
+                            <p class="card-text">
+                                <span data-ko="덕을 갖춘 이상적인 인간상. 끊임없는 자기 수양"
+                                      data-en="The ideal person of virtue and continuous self-cultivation">
+                                    덕을 갖춘 이상적인 인간상. 끊임없는 자기 수양
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 스토리 섹션 -->
+            <section class="section story-modern">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span data-ko="그의 이야기" data-en="His Story">그의 이야기</span>
+                    </h2>
+
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p data-ko="공자는 춘추시대 혼란기에 태어나, 평생을 이상 정치를 실현하고자 노력했습니다. 비록 정치적으로는 큰 성공을 거두지 못했지만, 그가 남긴 교육과 사상은 2,500년이 지난 오늘날까지도 동아시아 문화의 근간을 이루고 있습니다."
+                                 data-en="Born during the turbulent Spring and Autumn period, Confucius dedicated his life to realizing ideal governance. Though he achieved limited political success, his teachings have shaped East Asian culture for over 2,500 years.">
+                                공자는 춘추시대 혼란기에 태어나, 평생을 이상 정치를 실현하고자 노력했습니다. 비록 정치적으로는 큰 성공을 거두지 못했지만, 그가 남긴 교육과 사상은 2,500년이 지난 오늘날까지도 동아시아 문화의 근간을 이루고 있습니다.
+                            </p>
+                            <p data-ko="3,000명이 넘는 제자를 가르치며 '교육은 차별 없이 모두에게 열려있다'는 혁신적인 사상을 실천했습니다. 그의 가르침은 제자들에 의해 『논어』로 정리되어, 인류의 위대한 고전으로 남았습니다."
+                                 data-en="He taught over 3,000 students, practicing the revolutionary idea that 'education should be available to all without discrimination.' His teachings were compiled by disciples into the Analects, becoming one of humanity's greatest classics.">
+                                3,000명이 넘는 제자를 가르치며 '교육은 차별 없이 모두에게 열려있다'는 혁신적인 사상을 실천했습니다. 그의 가르침은 제자들에 의해 『논어』로 정리되어, 인류의 위대한 고전으로 남았습니다.
+                            </p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">BC 551</div>
+                                <div class="timeline-event">
+                                    <span data-ko="노나라 곡부에서 출생"
+                                          data-en="Born in Qufu, Lu State">
+                                        노나라 곡부에서 출생
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">
+                                    <span data-ko="청년기" data-en="Youth">청년기</span>
+                                </div>
+                                <div class="timeline-event">
+                                    <span data-ko="학문에 정진, 제자 양성 시작"
+                                          data-en="Devoted to learning, began teaching">
+                                        학문에 정진, 제자 양성 시작
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">
+                                    <span data-ko="50대" data-en="50s">50대</span>
+                                </div>
+                                <div class="timeline-event">
+                                    <span data-ko="노나라에서 정치 활동"
+                                          data-en="Political career in Lu">
+                                        노나라에서 정치 활동
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">
+                                    <span data-ko="14년간" data-en="14 years">14년간</span>
+                                </div>
+                                <div class="timeline-event">
+                                    <span data-ko="여러 나라를 순회하며 이상 실현 추구"
+                                          data-en="Traveled across states seeking to realize his ideals">
+                                        여러 나라를 순회하며 이상 실현 추구
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">BC 479</div>
+                                <div class="timeline-event">
+                                    <span data-ko="73세로 타계"
+                                          data-en="Passed away at 73">
+                                        73세로 타계
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 이순신 콘텐츠 -->
+    <div id="yisunsin" class="character-content">
+        <!-- 히어로 섹션 -->
+        <header class="hero-modern hero-yisunsin">
+            <div class="hero-background">
+                <div class="gradient-overlay"></div>
+            </div>
+            <div class="hero-text">
+                <div class="character-badge">李舜臣</div>
+                <h1 class="hero-title">
+                    <span data-ko="이순신" data-en="Yi Sun-sin">이순신</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span data-ko="조선의 명장, 불패의 해군 제독"
+                          data-en="Korea's Greatest Admiral, Undefeated Naval Commander">
+                        조선의 명장, 불패의 해군 제독
+                    </span>
+                </p>
+                <div class="hero-meta">
+                    <span class="meta-item">
+                        <span data-ko="1545-1598" data-en="1545-1598">1545-1598</span>
+                    </span>
+                    <span class="meta-divider">|</span>
+                    <span class="meta-item">
+                        <span data-ko="임진왜란 영웅" data-en="Hero of Imjin War">임진왜란 영웅</span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="main-modern">
+            <!-- 명언 섹션 -->
+            <section class="section quote-modern">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span data-ko="불멸의 명언" data-en="Immortal Words">불멸의 명언</span>
+                    </h2>
+
+                    <div class="quote-box">
+                        <div class="quote-original">必死則生 必生則死</div>
+                        <div class="quote-translation">
+                            <span data-ko="필사즉생 필생즉사"
+                                  data-en="Pil-sa jeuk-saeng pil-saeng jeuk-sa">
+                                필사즉생 필생즉사
+                            </span>
+                        </div>
+                        <div class="quote-meaning">
+                            <span data-ko="죽고자 하면 살 것이요, 살고자 하면 죽을 것이다"
+                                  data-en="Those who seek death shall live, and those who seek life shall die">
+                                죽고자 하면 살 것이요, 살고자 하면 죽을 것이다
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="quote-box secondary">
+                        <div class="quote-original">今臣戰船 尙有十二</div>
+                        <div class="quote-translation">
+                            <span data-ko="금신전선 상유십이"
+                                  data-en="Geum-sin jeon-seon sang-yu sip-i">
+                                금신전선 상유십이
+                            </span>
+                        </div>
+                        <div class="quote-meaning">
+                            <span data-ko="지금 신에게는 아직 12척의 전선이 있습니다"
+                                  data-en="I still have twelve warships remaining">
+                                지금 신에게는 아직 12척의 전선이 있습니다
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 핵심 업적 섹션 -->
+            <section class="section philosophy-modern">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span data-ko="주요 업적" data-en="Major Achievements">주요 업적</span>
+                    </h2>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">⚓</div>
+                            <h3 class="card-title">
+                                <span data-ko="23전 23승" data-en="23 Battles, 23 Victories">23전 23승</span>
+                            </h3>
+                            <p class="card-text">
+                                <span data-ko="임진왜란 7년 동안 단 한 번도 패배하지 않은 불패의 기록"
+                                      data-en="Undefeated record across 7 years of the Imjin War">
+                                    임진왜란 7년 동안 단 한 번도 패배하지 않은 불패의 기록
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">🛡️</div>
+                            <h3 class="card-title">
+                                <span data-ko="거북선" data-en="Turtle Ship">거북선</span>
+                            </h3>
+                            <p class="card-text">
+                                <span data-ko="세계 최초의 철갑선. 혁신적인 전술과 기술로 왜군을 격파"
+                                      data-en="World's first ironclad warship, defeating Japanese forces with innovative tactics">
+                                    세계 최초의 철갑선. 혁신적인 전술과 기술로 왜군을 격파
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">📜</div>
+                            <h3 class="card-title">
+                                <span data-ko="난중일기" data-en="War Diary">난중일기</span>
+                            </h3>
+                            <p class="card-text">
+                                <span data-ko="전쟁 중에도 기록한 일기. 인간적인 고뇌와 리더십의 기록"
+                                      data-en="Diary kept during war, documenting his humanity and leadership">
+                                    전쟁 중에도 기록한 일기. 인간적인 고뇌와 리더십의 기록
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 스토리 섹션 -->
+            <section class="section story-modern">
+                <div class="container">
+                    <h2 class="section-title">
+                        <span data-ko="그의 이야기" data-en="His Story">그의 이야기</span>
+                    </h2>
+
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p data-ko="1592년, 일본의 침략으로 조선은 나라 전체가 위기에 빠졌습니다. 하지만 이순신 장군이 이끄는 수군은 한산도 대첩, 명량 해전 등에서 압도적인 승리를 거두며 조선을 구했습니다."
+                                 data-en="In 1592, Japan's invasion plunged Korea into crisis. However, Admiral Yi's navy achieved overwhelming victories at battles like Hansan Island and Myeongnyang, saving the nation.">
+                                1592년, 일본의 침략으로 조선은 나라 전체가 위기에 빠졌습니다. 하지만 이순신 장군이 이끄는 수군은 한산도 대첩, 명량 해전 등에서 압도적인 승리를 거두며 조선을 구했습니다.
+                            </p>
+                            <p data-ko="특히 명량 해전에서는 단 12척의 전선으로 330척의 왜군 함대를 물리치는 기적을 이뤄냈습니다. 그의 뛰어난 전략, 리더십, 그리고 나라를 향한 충성심은 오늘날까지도 전 세계에서 존경받고 있습니다."
+                                 data-en="At the Battle of Myeongnyang, he achieved a miraculous victory with just 12 ships against 330 enemy vessels. His brilliant strategy, leadership, and devotion to his country are still respected worldwide.">
+                                특히 명량 해전에서는 단 12척의 전선으로 330척의 왜군 함대를 물리치는 기적을 이뤄냈습니다. 그의 뛰어난 전략, 리더십, 그리고 나라를 향한 충성심은 오늘날까지도 전 세계에서 존경받고 있습니다.
+                            </p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1545</div>
+                                <div class="timeline-event">
+                                    <span data-ko="서울 건천동에서 출생"
+                                          data-en="Born in Seoul">
+                                        서울 건천동에서 출생
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1576</div>
+                                <div class="timeline-event">
+                                    <span data-ko="무과 급제, 군인의 길로"
+                                          data-en="Passed military exam, began military career">
+                                        무과 급제, 군인의 길로
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1591</div>
+                                <div class="timeline-event">
+                                    <span data-ko="전라좌수사 임명"
+                                          data-en="Appointed Naval Commander">
+                                        전라좌수사 임명
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1592-1598</div>
+                                <div class="timeline-event">
+                                    <span data-ko="임진왜란, 23전 23승의 신화"
+                                          data-en="Imjin War, 23 victories">
+                                        임진왜란, 23전 23승의 신화
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1598</div>
+                                <div class="timeline-event">
+                                    <span data-ko="노량 해전에서 전사"
+                                          data-en="Died in Battle of Noryang">
+                                        노량 해전에서 전사
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30" cy="30" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <text x="30" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="currentColor">東</text>
+                    </svg>
+                </div>
+                <p class="brand-text">
+                    <span data-ko="동양 문화 굿즈 컬렉션"
+                          data-en="Eastern Philosophy Collection">
+                        동양 문화 굿즈 컬렉션
+                    </span>
+                </p>
+            </div>
+            <p class="footer-tagline">
+                <span data-ko="전통을 현대적으로, 문화를 일상 속으로"
+                      data-en="Tradition Reimagined, Culture in Daily Life">
+                    전통을 현대적으로, 문화를 일상 속으로
+                </span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script-modern.js"></script>
+</body>
+</html>

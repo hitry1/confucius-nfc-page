@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Backup files
+*-backup.html
+*-old.html
+
+# Documentation (optional)
+DEPLOYMENT_GUIDE.md
+images/README.md
+images/SAVE_IMAGES.txt
