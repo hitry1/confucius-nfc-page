@@ -127,6 +127,10 @@
     <!-- Feature Scripts (Loaded in head for early initialization) -->
     <script src="features.js" defer></script>
     <script src="lazy-loading.js" defer></script>
+
+    <!-- 3D Model Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <script src="model-viewer.js" defer></script>
 </head>
 <body>
     <!-- Scroll Progress Indicator -->
@@ -242,14 +246,27 @@
                             </div>
                         </div>
 
-                        <div class="gallery-item" data-item="statue">
-                            <div class="gallery-item-image">
-                                <div class="gallery-item-icon">🗿</div>
-                                <span class="gallery-badge" data-ko="조각" data-en="Sculpture">조각</span>
+                        <div class="gallery-item gallery-item-3d" data-item="statue">
+                            <div class="gallery-item-3d-viewer">
+                                <model-viewer
+                                    id="confucius-3d-model"
+                                    src="models/confucius.glb"
+                                    alt="3D model of Confucius statue"
+                                    auto-rotate
+                                    camera-controls
+                                    shadow-intensity="1"
+                                    environment-image="neutral"
+                                    style="width: 100%; height: 400px; background-color: #f5f5f5; border-radius: 12px;"
+                                >
+                                    <div slot="progress-bar" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                                        <div style="color: #8B2635;">Loading 3D Model...</div>
+                                    </div>
+                                </model-viewer>
+                                <span class="gallery-badge" data-ko="3D 모델" data-en="3D Model" style="background: linear-gradient(135deg, #8B2635, #d4424f);">3D 모델</span>
                             </div>
                             <div class="gallery-item-info">
                                 <h3 class="gallery-item-title" data-ko="공자상 (孔子像)" data-en="Confucius Statue">공자상 (孔子像)</h3>
-                                <p class="gallery-item-desc" data-ko="전통 복식을 입은 공자의 입상 조각" data-en="Standing statue of Confucius in traditional robes">전통 복식을 입은 공자의 입상 조각</p>
+                                <p class="gallery-item-desc" data-ko="전통 복식을 입은 공자의 입상 조각 - 마우스로 회전 가능" data-en="Standing statue of Confucius in traditional robes - Interactive 3D model">전통 복식을 입은 공자의 입상 조각 - 마우스로 회전 가능</p>
                             </div>
                         </div>
                     </div>
