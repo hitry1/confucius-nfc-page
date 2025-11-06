@@ -246,31 +246,17 @@
                             </div>
                         </div>
 
-                        <div class="gallery-item gallery-item-3d" data-item="statue">
-                            <div class="gallery-item-3d-viewer" style="position: relative; width: 100%;">
-                                <model-viewer
-                                    id="confucius-3d-model"
-                                    src="models/confucius.glb"
-                                    alt="3D model of Confucius statue"
-                                    auto-rotate
-                                    camera-controls
-                                    touch-action="pan-y"
-                                    interaction-prompt="auto"
-                                    shadow-intensity="1"
-                                    camera-orbit="0deg 75deg 2.5m"
-                                    min-camera-orbit="auto auto 1m"
-                                    max-camera-orbit="auto auto 10m"
-                                    style="width: 100%; height: 400px; background-color: #f5f5f5; border-radius: 12px; display: block; pointer-events: auto; position: relative; z-index: 1;"
-                                >
-                                    <div slot="progress-bar" style="display: flex; align-items: center; justify-content: center; height: 100%; pointer-events: none;">
-                                        <div style="color: #8B2635; font-size: 1rem;">Loading 3D Model...</div>
-                                    </div>
-                                </model-viewer>
-                                <span class="gallery-badge" data-ko="3D 모델" data-en="3D Model" style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #8B2635, #d4424f); z-index: 2; pointer-events: none;">3D 모델</span>
+                        <div class="gallery-item gallery-item-3d" data-item="statue" onclick="open3DModal()" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                            <div class="gallery-item-image">
+                                <div class="gallery-item-icon" style="font-size: 3rem;">🗿</div>
+                                <span class="gallery-badge" data-ko="3D 모델" data-en="3D Model" style="background: linear-gradient(135deg, #8B2635, #d4424f);">3D 모델</span>
                             </div>
                             <div class="gallery-item-info">
                                 <h3 class="gallery-item-title" data-ko="공자상 (孔子像)" data-en="Confucius Statue">공자상 (孔子像)</h3>
-                                <p class="gallery-item-desc" data-ko="드래그하여 회전 · 스크롤로 확대/축소" data-en="Drag to rotate · Scroll to zoom">드래그하여 회전 · 스크롤로 확대/축소</p>
+                                <p class="gallery-item-desc" data-ko="클릭하여 3D 모델 보기" data-en="Click to view 3D model">클릭하여 3D 모델 보기</p>
+                                <p style="font-size: 0.9rem; color: #8B2635; margin-top: 0.5rem; font-weight: 500;">
+                                    <span data-ko="👆 클릭하세요" data-en="👆 Click here">👆 클릭하세요</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1993,5 +1979,179 @@
         src="https://www.facebook.com/tr?id=123456789&ev=PageView&noscript=1"
     /></noscript>
     -->
+
+    <!-- 3D Model Modal -->
+    <div id="model3DModal" class="modal-3d" style="display: none;">
+        <div class="modal-3d-overlay" onclick="close3DModal()"></div>
+        <div class="modal-3d-content">
+            <button class="modal-3d-close" onclick="close3DModal()" aria-label="Close">✕</button>
+            <h2 class="modal-3d-title" data-ko="공자상 3D 모델" data-en="Confucius Statue 3D Model">공자상 3D 모델</h2>
+            <p class="modal-3d-instruction" data-ko="마우스 드래그로 회전 · 스크롤로 확대/축소" data-en="Drag to rotate · Scroll to zoom">마우스 드래그로 회전 · 스크롤로 확대/축소</p>
+            <div class="modal-3d-viewer-container">
+                <model-viewer
+                    id="confucius-3d-model-modal"
+                    src="models/confucius.glb"
+                    alt="3D model of Confucius statue"
+                    auto-rotate
+                    camera-controls
+                    touch-action="pan-y"
+                    interaction-prompt="auto"
+                    shadow-intensity="1"
+                    camera-orbit="0deg 75deg 2.5m"
+                    min-camera-orbit="auto auto 1m"
+                    max-camera-orbit="auto auto 10m"
+                    style="width: 100%; height: 100%; background-color: #f5f5f5;"
+                    loading="lazy"
+                >
+                    <div slot="progress-bar" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                        <div style="color: #8B2635; font-size: 1.2rem;">3D 모델 로딩 중...</div>
+                    </div>
+                </model-viewer>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-3d-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-3d-content {
+            position: relative;
+            max-width: 1200px;
+            width: 90%;
+            height: 85vh;
+            margin: 5vh auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-3d-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(139, 38, 53, 0.1);
+            color: #8B2635;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-3d-close:hover {
+            background: #8B2635;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-3d-title {
+            font-size: 1.8rem;
+            color: #8B2635;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .modal-3d-instruction {
+            font-size: 1rem;
+            color: #666;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .modal-3d-viewer-container {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-3d-content {
+                width: 95%;
+                height: 90vh;
+                margin: 2.5vh auto;
+                padding: 1.5rem;
+            }
+
+            .modal-3d-title {
+                font-size: 1.4rem;
+            }
+
+            .modal-3d-instruction {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hover effect for gallery item */
+        .gallery-item-3d:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 38, 53, 0.2);
+        }
+    </style>
+
+    <script>
+        function open3DModal() {
+            const modal = document.getElementById('model3DModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function close3DModal() {
+            const modal = document.getElementById('model3DModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // ESC key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                close3DModal();
+            }
+        });
+    </script>
+
 </body>
 </html>
