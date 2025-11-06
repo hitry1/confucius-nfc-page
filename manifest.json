@@ -1,7 +1,7 @@
 {
-  "name": "동양 사상가 NFC 키링",
-  "short_name": "NFC 키링",
-  "description": "공자, 노자, 석가모니 NFC 키링 - 동양 철학의 지혜",
+  "name": "Wisdom Library | 지혜서",
+  "short_name": "지혜서",
+  "description": "동양 철학의 정수 - 공자, 노자, 석가모니의 명언과 사상",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

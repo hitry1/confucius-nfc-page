@@ -3,7 +3,7 @@
  * Provides offline support and caching for better performance
  */
 
-const CACHE_NAME = 'nfc-keyring-v17';
+const CACHE_NAME = 'wisdom-library-v18';
 const urlsToCache = [
   '/',
   '/index.html',
