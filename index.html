@@ -247,26 +247,30 @@
                         </div>
 
                         <div class="gallery-item gallery-item-3d" data-item="statue">
-                            <div class="gallery-item-3d-viewer">
+                            <div class="gallery-item-3d-viewer" style="position: relative; width: 100%;">
                                 <model-viewer
                                     id="confucius-3d-model"
                                     src="models/confucius.glb"
                                     alt="3D model of Confucius statue"
                                     auto-rotate
                                     camera-controls
+                                    touch-action="pan-y"
+                                    interaction-prompt="auto"
                                     shadow-intensity="1"
-                                    environment-image="neutral"
-                                    style="width: 100%; height: 400px; background-color: #f5f5f5; border-radius: 12px;"
+                                    camera-orbit="0deg 75deg 2.5m"
+                                    min-camera-orbit="auto auto 1m"
+                                    max-camera-orbit="auto auto 10m"
+                                    style="width: 100%; height: 400px; background-color: #f5f5f5; border-radius: 12px; display: block; pointer-events: auto; position: relative; z-index: 1;"
                                 >
-                                    <div slot="progress-bar" style="display: flex; align-items: center; justify-content: center; height: 100%;">
-                                        <div style="color: #8B2635;">Loading 3D Model...</div>
+                                    <div slot="progress-bar" style="display: flex; align-items: center; justify-content: center; height: 100%; pointer-events: none;">
+                                        <div style="color: #8B2635; font-size: 1rem;">Loading 3D Model...</div>
                                     </div>
                                 </model-viewer>
-                                <span class="gallery-badge" data-ko="3D 모델" data-en="3D Model" style="background: linear-gradient(135deg, #8B2635, #d4424f);">3D 모델</span>
+                                <span class="gallery-badge" data-ko="3D 모델" data-en="3D Model" style="position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #8B2635, #d4424f); z-index: 2; pointer-events: none;">3D 모델</span>
                             </div>
                             <div class="gallery-item-info">
                                 <h3 class="gallery-item-title" data-ko="공자상 (孔子像)" data-en="Confucius Statue">공자상 (孔子像)</h3>
-                                <p class="gallery-item-desc" data-ko="전통 복식을 입은 공자의 입상 조각 - 마우스로 회전 가능" data-en="Standing statue of Confucius in traditional robes - Interactive 3D model">전통 복식을 입은 공자의 입상 조각 - 마우스로 회전 가능</p>
+                                <p class="gallery-item-desc" data-ko="드래그하여 회전 · 스크롤로 확대/축소" data-en="Drag to rotate · Scroll to zoom">드래그하여 회전 · 스크롤로 확대/축소</p>
                             </div>
                         </div>
                     </div>
