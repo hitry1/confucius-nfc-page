@@ -1,0 +1,22 @@
+# robots.txt for 동양 사상가 NFC 키링
+
+User-agent: *
+Allow: /
+
+# Disallow backup and development files
+Disallow: /backups/
+Disallow: /*.md$
+Disallow: /*-backup*.html
+Disallow: /*-old*.html
+
+# Allow important files
+Allow: /index.html
+Allow: /purchase.html
+Allow: /manifest.json
+Allow: /sw.js
+
+# Sitemap location
+Sitemap: https://confucius-nfc.example.com/sitemap.xml
+
+# Crawl delay (optional - be nice to servers)
+Crawl-delay: 1

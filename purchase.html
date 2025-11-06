@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>동양 사상가 NFC 키링 구매 | 공자·노자·석가모니 | 동양문화사</title>
+    <meta name="description" content="스마트폰으로 터치하면 철학자의 명언과 생애를 만날 수 있는 프리미엄 NFC 키링. 공자, 노자, 석가모니 3종 세트 특별 할인 중. 무료배송·내일 도착">
+    <meta name="keywords" content="NFC 키링, 공자 키링, 노자 키링, 석가모니 키링, 철학 선물, 문화상품, 동양 사상">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="동양 사상가 NFC 키링 | 동양문화사">
+    <meta property="og:description" content="스마트폰으로 철학의 세계로! 프리미엄 메탈 NFC 키링">
+    <meta property="og:image" content="/og-purchase.jpg">
+    <meta property="og:url" content="https://confucius-nfc.example.com/purchase.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0074e9;
+            --dark-blue: #005eb8;
+            --light-gray: #f7f7f7;
+            --border-gray: #e5e5e5;
+            --text-dark: #111111;
+            --text-gray: #555555;
+            --red: #fa622f;
+            --gold: #d4af37;
+            --green: #00a650;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: #f5f5f5;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .top-banner .highlight {
+            color: #ffeb3b;
+            font-weight: 700;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--border-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .lang-toggle {
+            padding: 8px 16px;
+            border: 1px solid var(--border-gray);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 24px auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .breadcrumb a {
+            color: var(--text-gray);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .trust-badge-icon {
+            font-size: 20px;
+        }
+
+        /* Product Section */
+        .product-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            border: 1px solid var(--border-gray);
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .main-image:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--red);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .thumbnail-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .thumbnail {
+            aspect-ratio: 1;
+            background: var(--light-gray);
+            border: 2px solid transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            transition: all 0.2s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        /* Product Info */
+        .product-info {
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: var(--red);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 3px;
+            margin-bottom: 12px;
+            margin-right: 8px;
+        }
+
+        .badge.hot {
+            background: #ff6b6b;
+        }
+
+        .badge.new {
+            background: var(--green);
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-subtitle {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .rating {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .stars {
+            color: #ffa500;
+            font-size: 16px;
+        }
+
+        .rating-text {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: linear-gradient(135deg, #ff6b6b, var(--red));
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .urgency-banner strong {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .countdown {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .price-section {
+            background: var(--light-gray);
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .discount-rate {
+            color: var(--red);
+            font-size: 28px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 700;
+            display: inline;
+        }
+
+        .original-price {
+            font-size: 18px;
+            color: var(--text-gray);
+            text-decoration: line-through;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .benefit-list {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        .benefit-item::before {
+            content: "✓";
+            color: var(--green);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Bundle Selector */
+        .bundle-selector {
+            margin-bottom: 24px;
+        }
+
+        .bundle-options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .bundle-option {
+            padding: 16px 20px;
+            border: 2px solid var(--border-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bundle-option:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .bundle-option.selected {
+            border-color: var(--primary-blue);
+            background: #e7f5ff;
+        }
+
+        .bundle-info {
+            flex: 1;
+        }
+
+        .bundle-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .bundle-desc {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .bundle-price-wrapper {
+            text-align: right;
+        }
+
+        .bundle-discount {
+            background: var(--red);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+
+        .bundle-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        /* Variant Selection */
+        .variant-section {
+            margin-bottom: 24px;
+        }
+
+        .variant-label {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .variant-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .variant-option {
+            padding: 16px;
+            border: 2px solid var(--border-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .variant-option:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,116,233,0.2);
+        }
+
+        .variant-option.selected {
+            border-color: var(--primary-blue);
+            background: #e7f5ff;
+        }
+
+        .variant-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .variant-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .variant-price {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Quantity Selector */
+        .quantity-section {
+            margin-bottom: 24px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quantity-control {
+            display: flex;
+            border: 1px solid var(--border-gray);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.2s;
+            font-weight: 600;
+        }
+
+        .quantity-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .quantity-btn:active {
+            background: var(--border-gray);
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            border: none;
+            border-left: 1px solid var(--border-gray);
+            border-right: 1px solid var(--border-gray);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .stock-info {
+            font-size: 14px;
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .stock-info.plenty {
+            color: var(--green);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,116,233,0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: #e7f5ff;
+        }
+
+        .btn-cart {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border-gray);
+        }
+
+        .btn-cart:hover {
+            border-color: var(--text-dark);
+            background: var(--light-gray);
+        }
+
+        /* Delivery Info */
+        .delivery-info {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            color: var(--text-gray);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .info-highlight {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* Guarantee Banner */
+        .guarantee-banner {
+            background: linear-gradient(135deg, var(--green), #00d66c);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .guarantee-banner h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .guarantee-banner p {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        /* Product Details Tabs */
+        .product-details {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border-gray);
+            overflow-x: auto;
+        }
+
+        .tab {
+            flex: 1;
+            min-width: fit-content;
+            padding: 20px;
+            border: none;
+            background: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab:hover {
+            color: var(--text-dark);
+        }
+
+        .tab.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .feature-item {
+            padding: 24px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Reviews */
+        .review {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .review:last-child {
+            border-bottom: none;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .reviewer {
+            font-weight: 600;
+        }
+
+        .review-date {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .review-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .review-helpful {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .helpful-btn {
+            background: none;
+            border: 1px solid var(--border-gray);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 12px;
+            transition: all 0.2s;
+        }
+
+        .helpful-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: #f0f0f0;
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .modal-text {
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .modal-btn {
+            width: 100%;
+        }
+
+        /* Sticky Purchase Bar (Mobile) */
+        .sticky-purchase-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--border-gray);
+            padding: 12px 20px;
+            z-index: 99;
+            box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+        }
+
+        .sticky-purchase-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sticky-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .sticky-btn {
+            padding: 12px 24px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .product-section {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .image-gallery {
+                position: relative;
+                top: 0;
+            }
+
+            .variant-options {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-purchase-bar {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-container {
+                padding: 12px 16px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .product-title {
+                font-size: 22px;
+            }
+
+            .price {
+                font-size: 26px;
+            }
+
+            .tabs {
+                overflow-x: auto;
+            }
+
+            .tab {
+                white-space: nowrap;
+                font-size: 14px;
+                padding: 16px;
+            }
+
+            .tab-content {
+                padding: 24px 16px;
+            }
+
+            .trust-badges {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        /* Loading Animation */
+        .spinner {
+            border: 3px solid var(--border-gray);
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <span data-ko="🎉 오늘만 특가! 3개 세트 구매 시 " data-en="🎉 Today Only! ">🎉 오늘만 특가! 3개 세트 구매 시 </span>
+        <span class="highlight" data-ko="20% 추가 할인" data-en="20% Extra Discount">20% 추가 할인</span>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span data-ko="동양문화사" data-en="Eastern Culture">동양문화사</span>
+            </a>
+            <div class="header-actions">
+                <button class="lang-toggle" onclick="toggleLanguage()" aria-label="언어 변경 / Change language">
+                    <span data-ko="English" data-en="한국어">English</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="index.html" data-ko="홈" data-en="Home">홈</a>
+            <span>›</span>
+            <a href="#" data-ko="문화상품" data-en="Cultural Products">문화상품</a>
+            <span>›</span>
+            <span data-ko="NFC 키링" data-en="NFC Keyrings">NFC 키링</span>
+        </nav>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <span class="trust-badge-icon">🔒</span>
+                <span data-ko="안전결제" data-en="Secure Payment">안전결제</span>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-badge-icon">📦</span>
+                <span data-ko="무료배송" data-en="Free Shipping">무료배송</span>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-badge-icon">↩️</span>
+                <span data-ko="7일 환불 보장" data-en="7-Day Returns">7일 환불 보장</span>
+            </div>
+            <div class="trust-badge">
+                <span class="trust-badge-icon">⭐</span>
+                <span data-ko="1,247개 리뷰" data-en="1,247 Reviews">1,247개 리뷰</span>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <section class="product-section">
+            <!-- Image Gallery -->
+            <div class="image-gallery">
+                <div class="main-image" id="mainImage">
+                    <span id="mainIcon">孔</span>
+                    <div class="image-badge" data-ko="한정판" data-en="LIMITED">한정판</div>
+                </div>
+                <div class="thumbnail-list">
+                    <div class="thumbnail active" onclick="changeImage('孔', this)" data-character="confucius">孔</div>
+                    <div class="thumbnail" onclick="changeImage('老', this)" data-character="laozi">老</div>
+                    <div class="thumbnail" onclick="changeImage('佛', this)" data-character="buddha">佛</div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <div>
+                    <span class="badge hot" data-ko="HOT" data-en="HOT">HOT</span>
+                    <span class="badge" data-ko="한정판" data-en="LIMITED">한정판</span>
+                    <span class="badge new" data-ko="NEW" data-en="NEW">NEW</span>
+                </div>
+
+                <h1 class="product-title">
+                    <span data-ko="동양 사상가 NFC 키링 (공자/노자/석가모니)"
+                          data-en="Eastern Philosopher NFC Keyring (Confucius/Laozi/Buddha)">
+                        동양 사상가 NFC 키링 (공자/노자/석가모니)
+                    </span>
+                </h1>
+
+                <p class="product-subtitle">
+                    <span data-ko="프리미엄 메탈 소재 · NFC 태그 내장 · 전용 컨텐츠 접속"
+                          data-en="Premium Metal · NFC Tag Embedded · Exclusive Content Access">
+                        프리미엄 메탈 소재 · NFC 태그 내장 · 전용 컨텐츠 접속
+                    </span>
+                </p>
+
+                <div class="rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="rating-text">4.9 <span data-ko="(1,247개 리뷰)" data-en="(1,247 reviews)">(1,247개 리뷰)</span></span>
+                </div>
+
+                <!-- Urgency Banner -->
+                <div class="urgency-banner">
+                    <strong data-ko="⏰ 오늘 주문 시 내일 도착!" data-en="⏰ Order today, arrives tomorrow!">⏰ 오늘 주문 시 내일 도착!</strong>
+                    <span data-ko="남은 시간: " data-en="Time left: ">남은 시간: </span>
+                    <span class="countdown" id="countdown">23:59:59</span>
+                </div>
+
+                <!-- Bundle Selector -->
+                <div class="bundle-selector">
+                    <label class="variant-label" data-ko="구매 옵션" data-en="Purchase Option">구매 옵션</label>
+                    <div class="bundle-options">
+                        <div class="bundle-option selected" onclick="selectBundle('single', this)" data-bundle="single">
+                            <div class="bundle-info">
+                                <div class="bundle-name" data-ko="단품 구매" data-en="Single Item">단품 구매</div>
+                                <div class="bundle-desc" data-ko="1개 (원하는 사상가 선택)" data-en="1 keyring (choose philosopher)">1개 (원하는 사상가 선택)</div>
+                            </div>
+                            <div class="bundle-price-wrapper">
+                                <div class="bundle-discount" data-ko="30% OFF" data-en="30% OFF">30% OFF</div>
+                                <div class="bundle-price" data-ko="24,500원" data-en="$24.50">24,500원</div>
+                            </div>
+                        </div>
+                        <div class="bundle-option" onclick="selectBundle('set', this)" data-bundle="set">
+                            <div class="bundle-info">
+                                <div class="bundle-name" data-ko="⭐ 3개 세트 (추천)" data-en="⭐ 3-Piece Set (Recommended)">⭐ 3개 세트 (추천)</div>
+                                <div class="bundle-desc" data-ko="공자 + 노자 + 석가모니 풀세트" data-en="Confucius + Laozi + Buddha full set">공자 + 노자 + 석가모니 풀세트</div>
+                            </div>
+                            <div class="bundle-price-wrapper">
+                                <div class="bundle-discount" data-ko="50% OFF" data-en="50% OFF">50% OFF</div>
+                                <div class="bundle-price" data-ko="52,500원" data-en="$52.50">52,500원</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variant Selection (Only visible for single purchase) -->
+                <div class="variant-section" id="variantSection">
+                    <label class="variant-label" data-ko="사상가 선택" data-en="Select Philosopher">사상가 선택</label>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant('confucius', this)" data-name="confucius">
+                            <div class="variant-icon">孔</div>
+                            <div class="variant-name" data-ko="공자" data-en="Confucius">공자</div>
+                        </div>
+                        <div class="variant-option" onclick="selectVariant('laozi', this)" data-name="laozi">
+                            <div class="variant-icon">老</div>
+                            <div class="variant-name" data-ko="노자" data-en="Laozi">노자</div>
+                        </div>
+                        <div class="variant-option" onclick="selectVariant('buddha', this)" data-name="buddha">
+                            <div class="variant-icon">佛</div>
+                            <div class="variant-name" data-ko="석가모니" data-en="Buddha">석가모니</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quantity Selection (Only visible for single purchase) -->
+                <div class="quantity-section" id="quantitySection">
+                    <label class="variant-label" data-ko="수량" data-en="Quantity">수량</label>
+                    <div class="quantity-selector">
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)" aria-label="수량 감소 / Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="99" readonly aria-label="수량 / Quantity">
+                            <button class="quantity-btn" onclick="changeQuantity(1)" aria-label="수량 증가 / Increase quantity">+</button>
+                        </div>
+                        <span class="stock-info" id="stockInfo" data-ko="재고 12개 남음" data-en="12 left in stock">재고 12개 남음</span>
+                    </div>
+                </div>
+
+                <!-- Price Summary -->
+                <div class="price-section">
+                    <div>
+                        <span class="discount-rate" id="discountRate">30%</span>
+                        <span class="price" id="finalPrice" data-ko="24,500원" data-en="$24.50">24,500원</span>
+                        <div class="original-price" id="originalPrice" data-ko="35,000원" data-en="$35.00">35,000원</div>
+                    </div>
+
+                    <div class="benefit-list">
+                        <div class="benefit-item" data-ko="무료배송" data-en="Free Shipping">무료배송</div>
+                        <div class="benefit-item" data-ko="오늘출발" data-en="Ships Today">오늘출발</div>
+                        <div class="benefit-item" data-ko="내일 도착 보장" data-en="Guaranteed Tomorrow">내일 도착 보장</div>
+                        <div class="benefit-item" data-ko="7일 무료 반품" data-en="7-Day Free Returns">7일 무료 반품</div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="buyNow()">
+                        <span data-ko="🛒 바로 구매" data-en="🛒 Buy Now">🛒 바로 구매</span>
+                    </button>
+                    <button class="btn btn-cart" onclick="addToCart()">
+                        <span data-ko="🛍️ 장바구니 담기" data-en="🛍️ Add to Cart">🛍️ 장바구니 담기</span>
+                    </button>
+                </div>
+
+                <!-- Delivery Info -->
+                <div class="delivery-info">
+                    <div class="info-row">
+                        <span class="info-label" data-ko="배송" data-en="Delivery">배송</span>
+                        <span class="info-value info-highlight" data-ko="무료배송" data-en="Free">무료배송</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label" data-ko="도착 예정" data-en="Estimated Delivery">도착 예정</span>
+                        <span class="info-value" data-ko="내일 도착 보장" data-en="Tomorrow">내일 도착 보장</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label" data-ko="판매자" data-en="Seller">판매자</span>
+                        <span class="info-value" data-ko="동양문화사 공식스토어" data-en="Eastern Culture Official">동양문화사 공식스토어</span>
+                    </div>
+                </div>
+
+                <!-- Guarantee Banner -->
+                <div class="guarantee-banner">
+                    <h3 data-ko="✅ 100% 만족 보장" data-en="✅ 100% Satisfaction Guaranteed">✅ 100% 만족 보장</h3>
+                    <p data-ko="만족하지 않으시면 7일 이내 전액 환불해 드립니다"
+                       data-en="Full refund within 7 days if not satisfied">
+                        만족하지 않으시면 7일 이내 전액 환불해 드립니다
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Details Tabs -->
+        <section class="product-details">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab(0)">
+                    <span data-ko="상품정보" data-en="Details">상품정보</span>
+                </button>
+                <button class="tab" onclick="switchTab(1)">
+                    <span data-ko="상품평" data-en="Reviews">상품평</span>
+                    <span>(1,247)</span>
+                </button>
+                <button class="tab" onclick="switchTab(2)">
+                    <span data-ko="배송/교환/반품" data-en="Shipping">배송/교환/반품</span>
+                </button>
+                <button class="tab" onclick="switchTab(3)">
+                    <span data-ko="FAQ" data-en="FAQ">FAQ</span>
+                </button>
+            </div>
+
+            <!-- Tab 1: Details -->
+            <div class="tab-content active">
+                <h2 data-ko="상품 상세정보" data-en="Product Information">상품 상세정보</h2>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h3 class="feature-title" data-ko="NFC 기술 탑재" data-en="NFC Technology">NFC 기술 탑재</h3>
+                        <p class="feature-desc" data-ko="스마트폰을 키링에 가까이 대면 자동으로 전용 페이지로 이동합니다. 별도 앱 설치 불필요!"
+                           data-en="Simply tap your smartphone to the keyring to access exclusive content. No app installation required!">
+                            스마트폰을 키링에 가까이 대면 자동으로 전용 페이지로 이동합니다. 별도 앱 설치 불필요!
+                        </p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">✨</div>
+                        <h3 class="feature-title" data-ko="프리미엄 품질" data-en="Premium Quality">프리미엄 품질</h3>
+                        <p class="feature-desc" data-ko="고급 아연합금 소재로 제작되어 반영구적으로 사용 가능합니다. 표면은 특수 코팅 처리되어 긁힘에 강합니다."
+                           data-en="Made with high-quality zinc alloy for semi-permanent use. Special coating prevents scratches.">
+                            고급 아연합금 소재로 제작되어 반영구적으로 사용 가능합니다. 표면은 특수 코팅 처리되어 긁힘에 강합니다.
+                        </p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">📚</div>
+                        <h3 class="feature-title" data-ko="학술적 컨텐츠" data-en="Academic Content">학술적 컨텐츠</h3>
+                        <p class="feature-desc" data-ko="주요 어록, 생애, 사상 등을 검증된 학술 자료를 바탕으로 제공합니다. 한국어/영어 지원."
+                           data-en="Verified academic content including quotes, biography, and philosophy. Korean/English supported.">
+                            주요 어록, 생애, 사상 등을 검증된 학술 자료를 바탕으로 제공합니다. 한국어/영어 지원.
+                        </p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">🎁</div>
+                        <h3 class="feature-title" data-ko="선물용 패키지" data-en="Gift Package">선물용 패키지</h3>
+                        <p class="feature-desc" data-ko="고급스러운 선물 포장과 함께 배송됩니다. 생일, 졸업, 승진 선물로 최적입니다."
+                           data-en="Comes with premium gift packaging. Perfect for birthdays, graduations, and promotions.">
+                            고급스러운 선물 포장과 함께 배송됩니다. 생일, 졸업, 승진 선물로 최적입니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; padding: 24px; background: var(--light-gray); border-radius: 8px;">
+                    <h3 style="margin-bottom: 16px;" data-ko="제품 사양" data-en="Specifications">제품 사양</h3>
+                    <div class="info-row">
+                        <span class="info-label" data-ko="크기" data-en="Size">크기</span>
+                        <span class="info-value">40mm × 40mm × 3mm</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label" data-ko="무게" data-en="Weight">무게</span>
+                        <span class="info-value">25g</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label" data-ko="재질" data-en="Material">재질</span>
+                        <span class="info-value" data-ko="아연합금 (골드/실버/브론즈 도금)" data-en="Zinc Alloy (Gold/Silver/Bronze)">아연합금 (골드/실버/브론즈 도금)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label" data-ko="NFC 칩" data-en="NFC Chip">NFC 칩</span>
+                        <span class="info-value">NTAG216 (888 bytes)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label" data-ko="호환성" data-en="Compatibility">호환성</span>
+                        <span class="info-value" data-ko="모든 NFC 지원 스마트폰" data-en="All NFC-enabled smartphones">모든 NFC 지원 스마트폰</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Reviews -->
+            <div class="tab-content">
+                <h2 data-ko="고객 상품평 (1,247)" data-en="Customer Reviews (1,247)">고객 상품평 (1,247)</h2>
+
+                <div class="review">
+                    <div class="review-header">
+                        <div>
+                            <span class="stars">★★★★★</span>
+                            <span class="reviewer" data-ko="김**" data-en="Kim**">김**</span>
+                        </div>
+                        <span class="review-date">2025.10.28</span>
+                    </div>
+                    <p class="review-text" data-ko="생각보다 퀄리티가 훨씬 좋아요! NFC도 잘 작동하고 디자인도 고급스럽습니다. 졸업 선물로 샀는데 받는 분이 너무 좋아하셨어요. 3개 세트로 사면 가성비 훨씬 좋습니다!"
+                       data-en="Much better quality than expected! NFC works perfectly and design is premium. Bought as graduation gift and they loved it. 3-piece set is great value!">
+                        생각보다 퀄리티가 훨씬 좋아요! NFC도 잘 작동하고 디자인도 고급스럽습니다. 졸업 선물로 샀는데 받는 분이 너무 좋아하셨어요. 3개 세트로 사면 가성비 훨씬 좋습니다!
+                    </p>
+                    <div class="review-helpful">
+                        <span data-ko="도움이 되었나요?" data-en="Was this helpful?">도움이 되었나요?</span>
+                        <button class="helpful-btn" data-ko="👍 도움돼요 (234)" data-en="👍 Helpful (234)">👍 도움돼요 (234)</button>
+                    </div>
+                </div>
+
+                <div class="review">
+                    <div class="review-header">
+                        <div>
+                            <span class="stars">★★★★★</span>
+                            <span class="reviewer" data-ko="이**" data-en="Lee**">이**</span>
+                        </div>
+                        <span class="review-date">2025.10.25</span>
+                    </div>
+                    <p class="review-text" data-ko="회사 단체 기념품으로 구매했습니다. 컨텐츠도 알차고 포장도 고급스러워서 만족스럽습니다. NFC 태그하면 바로 해당 인물 페이지로 이동하는 게 신기해요. 다들 좋아하시더라고요!"
+                       data-en="Purchased as corporate gifts. Rich content and premium packaging. The NFC feature that takes you directly to each philosopher's page is amazing. Everyone loved it!">
+                        회사 단체 기념품으로 구매했습니다. 컨텐츠도 알차고 포장도 고급스러워서 만족스럽습니다. NFC 태그하면 바로 해당 인물 페이지로 이동하는 게 신기해요. 다들 좋아하시더라고요!
+                    </p>
+                    <div class="review-helpful">
+                        <span data-ko="도움이 되었나요?" data-en="Was this helpful?">도움이 되었나요?</span>
+                        <button class="helpful-btn" data-ko="👍 도움돼요 (189)" data-en="👍 Helpful (189)">👍 도움돼요 (189)</button>
+                    </div>
+                </div>
+
+                <div class="review">
+                    <div class="review-header">
+                        <div>
+                            <span class="stars">★★★★★</span>
+                            <span class="reviewer" data-ko="박**" data-en="Park**">박**</span>
+                        </div>
+                        <span class="review-date">2025.10.22</span>
+                    </div>
+                    <p class="review-text" data-ko="철학에 관심있는 사람에게 정말 좋은 선물이에요. NFC로 명언이랑 생애 정보를 바로 볼 수 있어서 신기하고 교육적이에요. 메탈 소재라 무게감도 있고 고급스러워요. 강추!"
+                       data-en="Perfect gift for philosophy enthusiasts. NFC access to quotes and biography is amazing and educational. Premium metal feel. Highly recommend!">
+                        철학에 관심있는 사람에게 정말 좋은 선물이에요. NFC로 명언이랑 생애 정보를 바로 볼 수 있어서 신기하고 교육적이에요. 메탈 소재라 무게감도 있고 고급스러워요. 강추!
+                    </p>
+                    <div class="review-helpful">
+                        <span data-ko="도움이 되었나요?" data-en="Was this helpful?">도움이 되었나요?</span>
+                        <button class="helpful-btn" data-ko="👍 도움돼요 (276)" data-en="👍 Helpful (276)">👍 도움돼요 (276)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Shipping -->
+            <div class="tab-content">
+                <h2 data-ko="배송/교환/반품 안내" data-en="Shipping & Returns">배송/교환/반품 안내</h2>
+
+                <div style="margin-top: 24px;">
+                    <h3 style="margin-bottom: 12px; font-size: 18px;" data-ko="배송 안내" data-en="Shipping Information">배송 안내</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-gray);">
+                        <li data-ko="배송비: 무료배송" data-en="Shipping: Free">배송비: 무료배송</li>
+                        <li data-ko="배송 기간: 결제 후 1-2일 이내 도착 (오늘 주문 시 내일 도착)" data-en="Delivery: 1-2 days (order today, arrives tomorrow)">배송 기간: 결제 후 1-2일 이내 도착 (오늘 주문 시 내일 도착)</li>
+                        <li data-ko="배송 지역: 전국 (제주/도서산간 지역 포함)" data-en="Coverage: Nationwide">배송 지역: 전국 (제주/도서산간 지역 포함)</li>
+                        <li data-ko="배송 추적: 실시간 배송 추적 가능" data-en="Tracking: Real-time tracking available">배송 추적: 실시간 배송 추적 가능</li>
+                    </ul>
+
+                    <h3 style="margin: 24px 0 12px; font-size: 18px;" data-ko="교환/반품 안내" data-en="Exchange & Return">교환/반품 안내</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-gray);">
+                        <li data-ko="교환/반품 기간: 상품 수령 후 7일 이내" data-en="Period: Within 7 days of receipt">교환/반품 기간: 상품 수령 후 7일 이내</li>
+                        <li data-ko="교환/반품 비용: 무료 (단, 고객 변심 시 왕복 배송비 부담)" data-en="Cost: Free (customer pays for returns due to change of mind)">교환/반품 비용: 무료 (단, 고객 변심 시 왕복 배송비 부담)</li>
+                        <li data-ko="제품 하자 시 100% 무료 교환/환불" data-en="100% free exchange/refund for defective products">제품 하자 시 100% 무료 교환/환불</li>
+                        <li data-ko="반품 시 미개봉 상태여야 합니다" data-en="Must be unopened for returns">반품 시 미개봉 상태여야 합니다</li>
+                    </ul>
+
+                    <div style="margin-top: 24px; padding: 20px; background: #e7f5ff; border-radius: 8px; border-left: 4px solid var(--primary-blue);">
+                        <h4 style="margin-bottom: 8px; color: var(--primary-blue);" data-ko="💡 고객 서비스" data-en="💡 Customer Service">💡 고객 서비스</h4>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-gray);" data-ko="문의사항이 있으시면 언제든지 고객센터(1588-1234)로 연락주세요. 평일 09:00-18:00 운영"
+                           data-en="Contact customer service (1588-1234) anytime. Operating hours: Weekdays 09:00-18:00">
+                            문의사항이 있으시면 언제든지 고객센터(1588-1234)로 연락주세요. 평일 09:00-18:00 운영
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: FAQ -->
+            <div class="tab-content">
+                <h2 data-ko="자주 묻는 질문" data-en="Frequently Asked Questions">자주 묻는 질문</h2>
+
+                <div style="margin-top: 24px;">
+                    <div style="margin-bottom: 24px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                        <h3 style="margin-bottom: 12px; font-size: 16px; color: var(--text-dark);" data-ko="Q. NFC가 무엇인가요?" data-en="Q. What is NFC?">Q. NFC가 무엇인가요?</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-gray);" data-ko="A. NFC(Near Field Communication)는 스마트폰을 태그에 가까이 대기만 하면 자동으로 정보를 전달하는 무선 통신 기술입니다. 별도 앱 설치가 필요 없어 매우 편리합니다."
+                           data-en="A. NFC (Near Field Communication) is a wireless technology that transfers information when you tap your smartphone. No app installation needed.">
+                            A. NFC(Near Field Communication)는 스마트폰을 태그에 가까이 대기만 하면 자동으로 정보를 전달하는 무선 통신 기술입니다. 별도 앱 설치가 필요 없어 매우 편리합니다.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                        <h3 style="margin-bottom: 12px; font-size: 16px; color: var(--text-dark);" data-ko="Q. 모든 스마트폰에서 사용 가능한가요?" data-en="Q. Compatible with all smartphones?">Q. 모든 스마트폰에서 사용 가능한가요?</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-gray);" data-ko="A. 네, NFC를 지원하는 모든 스마트폰(아이폰 7 이상, 대부분의 안드로이드)에서 사용 가능합니다. 최신 기종은 대부분 NFC를 기본 탑재하고 있습니다."
+                           data-en="A. Yes, compatible with all NFC-enabled smartphones (iPhone 7+, most Android devices). Most modern smartphones support NFC.">
+                            A. 네, NFC를 지원하는 모든 스마트폰(아이폰 7 이상, 대부분의 안드로이드)에서 사용 가능합니다. 최신 기종은 대부분 NFC를 기본 탑재하고 있습니다.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                        <h3 style="margin-bottom: 12px; font-size: 16px; color: var(--text-dark);" data-ko="Q. 배터리가 필요한가요?" data-en="Q. Does it need battery?">Q. 배터리가 필요한가요?</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-gray);" data-ko="A. 아니요! NFC 태그는 배터리가 필요 없으며 반영구적으로 사용 가능합니다. 스마트폰의 전력만으로 작동합니다."
+                           data-en="A. No! NFC tags are battery-free and work semi-permanently using smartphone power only.">
+                            A. 아니요! NFC 태그는 배터리가 필요 없으며 반영구적으로 사용 가능합니다. 스마트폰의 전력만으로 작동합니다.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                        <h3 style="margin-bottom: 12px; font-size: 16px; color: var(--text-dark);" data-ko="Q. 세트 구매 시 선택할 수 있나요?" data-en="Q. Can I choose items in the set?">Q. 세트 구매 시 선택할 수 있나요?</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-gray);" data-ko="A. 3개 세트는 공자, 노자, 석가모니가 모두 포함된 풀세트입니다. 단품 구매 시에는 원하는 사상가 1인을 선택하실 수 있습니다."
+                           data-en="A. The 3-piece set includes all three philosophers (Confucius, Laozi, Buddha). For single purchase, you can choose one.">
+                            A. 3개 세트는 공자, 노자, 석가모니가 모두 포함된 풀세트입니다. 단품 구매 시에는 원하는 사상가 1인을 선택하실 수 있습니다.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 24px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+                        <h3 style="margin-bottom: 12px; font-size: 16px; color: var(--text-dark);" data-ko="Q. 선물 포장이 가능한가요?" data-en="Q. Gift wrapping available?">Q. 선물 포장이 가능한가요?</h3>
+                        <p style="font-size: 14px; line-height: 1.6; color: var(--text-gray);" data-ko="A. 네, 모든 상품은 무료로 프리미엄 선물 포장되어 배송됩니다. 생일, 졸업, 승진 선물로 안성맞춤입니다!"
+                           data-en="A. Yes, all products come with free premium gift packaging. Perfect for birthdays, graduations, and promotions!">
+                            A. 네, 모든 상품은 무료로 프리미엄 선물 포장되어 배송됩니다. 생일, 졸업, 승진 선물로 안성맞춤입니다!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p data-ko="동양문화사 | 사업자등록번호: 123-45-67890 | 대표: 홍길동"
+           data-en="Eastern Culture | Business No: 123-45-67890 | CEO: Hong Gildong">
+            동양문화사 | 사업자등록번호: 123-45-67890 | 대표: 홍길동
+        </p>
+        <p data-ko="서울특별시 강남구 테헤란로 123 | 고객센터: 1588-1234"
+           data-en="123 Teheran-ro, Gangnam-gu, Seoul | CS: 1588-1234">
+            서울특별시 강남구 테헤란로 123 | 고객센터: 1588-1234
+        </p>
+        <p style="margin-top: 12px; font-size: 11px;">© 2025 Eastern Culture. All rights reserved.</p>
+    </footer>
+
+    <!-- Sticky Purchase Bar (Mobile) -->
+    <div class="sticky-purchase-bar">
+        <div class="sticky-purchase-content">
+            <div>
+                <div style="font-size: 13px; color: var(--text-gray); margin-bottom: 4px;" data-ko="총 금액" data-en="Total">총 금액</div>
+                <div class="sticky-price" id="stickyPrice" data-ko="24,500원" data-en="$24.50">24,500원</div>
+            </div>
+            <button class="sticky-btn" onclick="buyNow()">
+                <span data-ko="구매하기" data-en="Buy Now">구매하기</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="purchaseModal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2 class="modal-title" id="modalTitle" data-ko="주문 완료!" data-en="Order Complete!">주문 완료!</h2>
+            <p class="modal-text" id="modalMessage"></p>
+            <button class="btn btn-primary modal-btn" onclick="closeModal()">
+                <span data-ko="확인" data-en="OK">확인</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="purchase.js"></script>
+</body>
+</html>

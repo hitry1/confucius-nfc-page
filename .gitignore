@@ -1,18 +1,48 @@
-# macOS
+# OS
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Backups
+backups/
+*-backup*.html
+*-old*.html
+*-before-*.html
+
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
 
 # Logs
 *.log
+npm-debug.log*
 
-# Temporary files
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.min.css
+*.min.js
+
+# Environment
+.env
+.env.local
+
+# Cache
+.cache/
+*.cache
+
+# Temporary
+tmp/
+temp/
 *.tmp
-*.swp
-
-# Backup files
-*-backup.html
-*-old.html
-
-# Documentation (optional)
-DEPLOYMENT_GUIDE.md
-images/README.md
-images/SAVE_IMAGES.txt

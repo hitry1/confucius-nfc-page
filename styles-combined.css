@@ -1,0 +1,3235 @@
+/* ===== Modern Minimal Design ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Modern Color Palette */
+    --primary: #1a1a1a;
+    --secondary: #4a4a4a;
+    --accent: #c9a961;
+    --accent-light: #e8d7b5;
+    --bg-light: #fafafa;
+    --bg-white: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6a6a6a;
+    --border: #e0e0e0;
+
+    /* 공자 테마 (유교 - 붉은색/금색) */
+    --confucius-primary: #8B2635;
+    --confucius-deep: #5C1A1B;
+    --confucius-accent: #D4AF37;
+    --confucius-light: #F4E4C1;
+
+    /* 노자 테마 (도가 - 청록색/옥색) */
+    --laozi-primary: #2C5F6F;
+    --laozi-deep: #1A3D4D;
+    --laozi-accent: #7FCDCD;
+    --laozi-light: #D0F0F0;
+
+    /* 석가모니 테마 (불교 - 주황/보라) */
+    --buddha-primary: #D97638;
+    --buddha-deep: #A0541F;
+    --buddha-accent: #8B6BB7;
+    --buddha-light: #E8D9F3;
+
+    /* Yi Sun-sin Theme */
+    --navy: #1e3a5f;
+    --ocean: #2c5f8d;
+    --steel: #8b9dc3;
+
+    /* Typography */
+    --font-sans: 'Noto Sans KR', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+
+    /* Spacing */
+    --container-width: 1200px;
+    --section-spacing: 5rem;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ===== Navigation Bar ===== */
+.character-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-tab:hover {
+    background: var(--bg-light);
+    color: var(--text-primary);
+}
+
+.nav-tab.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* 각 인물별 네비게이션 탭 색상 */
+.nav-tab[data-character="confucius"].active {
+    background: var(--confucius-primary);
+}
+
+.nav-tab[data-character="laozi"].active {
+    background: var(--laozi-primary);
+}
+
+.nav-tab[data-character="buddha"].active {
+    background: var(--buddha-primary);
+}
+
+.tab-icon {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.tab-name {
+    font-size: 1rem;
+}
+
+.lang-toggle {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+    background: var(--bg-light);
+    border-color: var(--accent);
+}
+
+/* ===== Character Content ===== */
+.character-content {
+    display: none;
+    padding-top: 70px;
+}
+
+.character-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Hero Section ===== */
+.hero-modern {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--confucius-light) 0%, var(--confucius-accent) 100%);
+}
+
+/* 공자 히어로 배경 */
+#confucius .hero-background {
+    background: linear-gradient(135deg, var(--confucius-light) 0%, var(--confucius-accent) 60%, var(--confucius-primary) 100%);
+}
+
+/* 노자 히어로 배경 */
+#laozi .hero-background,
+.hero-laozi .hero-background {
+    background: linear-gradient(135deg, var(--laozi-light) 0%, var(--laozi-accent) 60%, var(--laozi-primary) 100%);
+}
+
+/* 석가모니 히어로 배경 */
+#buddha .hero-background,
+.hero-buddha .hero-background {
+    background: linear-gradient(135deg, var(--buddha-light) 0%, var(--buddha-accent) 60%, var(--buddha-primary) 100%);
+}
+
+.hero-yisunsin .hero-background {
+    background: linear-gradient(135deg, var(--steel) 0%, var(--navy) 100%);
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.1) 100%);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+    animation: fadeInUp 0.8s ease;
+}
+
+.character-badge {
+    display: inline-block;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1rem;
+    letter-spacing: 0.2em;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.meta-divider {
+    opacity: 0.5;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Main Content ===== */
+.main-modern {
+    background: white;
+}
+
+.section {
+    padding: var(--section-spacing) 0;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* ===== Quote Section ===== */
+.quote-modern {
+    background: var(--bg-light);
+}
+
+.quote-box {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.quote-box.secondary {
+    margin-top: 2rem;
+}
+
+.quote-original {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    letter-spacing: 0.3em;
+    line-height: 1.4;
+}
+
+.hero-yisunsin + .main-modern .quote-original {
+    color: var(--ocean);
+}
+
+.quote-translation {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.quote-meaning {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* ===== Cards Grid ===== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    padding: 2.5rem 2rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+}
+
+.hero-yisunsin + .main-modern .card:hover {
+    border-color: var(--ocean);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* ===== Story Section ===== */
+.story-modern {
+    background: var(--bg-light);
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--text-secondary);
+}
+
+.story-text p {
+    margin-bottom: 1.5rem;
+}
+
+.timeline {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 3px solid var(--accent);
+}
+
+.hero-yisunsin + .main-modern .timeline {
+    border-left-color: var(--ocean);
+}
+
+.timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.timeline-year {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 100px;
+}
+
+.hero-yisunsin + .main-modern .timeline-year {
+    color: var(--ocean);
+}
+
+.timeline-event {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* ===== Footer ===== */
+.footer-modern {
+    background: var(--primary);
+    color: white;
+    padding: 3rem 0 2rem;
+    text-align: center;
+}
+
+.footer-brand {
+    margin-bottom: 1.5rem;
+}
+
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    color: var(--accent);
+}
+
+.brand-logo svg {
+    width: 100%;
+    height: 100%;
+}
+
+.brand-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+/* ===== Responsive Design ===== */
+@media screen and (max-width: 768px) {
+    :root {
+        --section-spacing: 3rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .tab-icon {
+        font-size: 1.2rem;
+    }
+
+    .tab-name {
+        font-size: 0.85rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .character-badge {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .quote-original {
+        font-size: 1.8rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .timeline-year {
+        min-width: auto;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .story-content {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+/* ===== Smooth Scrolling ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Print Optimization ===== */
+@media print {
+    .character-nav,
+    .footer-modern {
+        display: none;
+    }
+
+    .hero-modern {
+        min-height: auto;
+        page-break-after: always;
+    }
+}
+/* ===== Academic Enhancement Styles ===== */
+
+/* 각 사상가별 색상 테마 오버라이드 */
+#confucius {
+    --accent: var(--confucius-accent);
+    --accent-light: var(--confucius-light);
+    --theme-primary: var(--confucius-primary);
+}
+
+#laozi {
+    --accent: var(--laozi-accent);
+    --accent-light: var(--laozi-light);
+    --theme-primary: var(--laozi-primary);
+}
+
+#buddha {
+    --accent: var(--buddha-accent);
+    --accent-light: var(--buddha-light);
+    --theme-primary: var(--buddha-primary);
+}
+
+/* 명언 컬렉션 */
+.quote-collection {
+    background: var(--bg-white);
+}
+
+.quotes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.quote-card-academic {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.quote-header {
+    margin-bottom: 1.5rem;
+}
+
+.quote-source {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    background: var(--accent-light);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    font-family: 'Noto Serif KR', serif;
+    pointer-events: none;
+}
+
+.quote-source-link {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.quote-source-link .quote-source {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.quote-original {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    font-family: 'Noto Serif KR', serif;
+}
+
+.quote-romanization {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.quote-translation {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-light);
+}
+
+.quote-note {
+    background: var(--bg-light);
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.quote-note p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* 일화 섹션 */
+.anecdotes {
+    background: var(--bg-light);
+}
+
+.anecdote-list {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.anecdote-item {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.anecdote-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--accent-light);
+}
+
+.anecdote-content p {
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 1rem;
+}
+
+.anecdote-source {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* 심화 철학 섹션 */
+.philosophy-deep {
+    background: var(--bg-white);
+}
+
+.philosophy-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.card-icon-large {
+    font-size: 5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.card-title-large {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-light);
+}
+
+.card-text-long p {
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.card-text-long p:last-child {
+    margin-bottom: 0;
+}
+
+/* 학술 출처 섹션 */
+.references {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem 0;
+}
+
+.reference-category {
+    margin-bottom: 3rem;
+}
+
+.reference-category:last-child {
+    margin-bottom: 0;
+}
+
+.ref-category-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+.reference-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reference-list li {
+    background: white;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-light);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.reference-list li em {
+    font-style: italic;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.academic-note {
+    background: white;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.academic-note p {
+    color: var(--text-secondary);
+    line-height: 1.9;
+    font-size: 0.95rem;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    .quotes-grid {
+        gap: 1.5rem;
+    }
+
+    .quote-card-academic {
+        padding: 1.5rem;
+    }
+
+    .quote-original {
+        font-size: 1.4rem;
+    }
+
+    .quote-translation {
+        font-size: 1.05rem;
+    }
+
+    .anecdote-item {
+        padding: 1.5rem;
+    }
+
+    .anecdote-title {
+        font-size: 1.2rem;
+    }
+
+    .philosophy-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .card-icon-large {
+        font-size: 3.5rem;
+    }
+
+    .card-title-large {
+        font-size: 1.5rem;
+    }
+
+    .reference-list li {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 인쇄 최적화 */
+@media print {
+    .quote-card-academic,
+    .anecdote-item,
+    .philosophy-card,
+    .reference-list li {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .section {
+        page-break-before: auto;
+        page-break-after: auto;
+    }
+
+    .section-title {
+        page-break-after: avoid;
+    }
+
+    .quote-note {
+        background: #f5f5f5;
+    }
+}
+
+/* 학술적 강조 스타일 */
+.highlight-term {
+    background: linear-gradient(transparent 60%, var(--accent-light) 60%);
+    font-weight: 600;
+    padding: 0 0.2em;
+}
+
+.chinese-char {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* 타임라인 강화 (기존 스타일 유지하면서 학술적 요소 추가) */
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent-light), var(--accent));
+}
+
+/* 접근성 향상 */
+.quote-card-academic:focus-within,
+.anecdote-item:focus-within,
+.philosophy-card:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* 다크 모드 지원 (선택적) */
+@media (prefers-color-scheme: dark) {
+    /* 다크 모드 시 별도 스타일 적용 가능 */
+}
+/* ===== Premium Visual Enhancement ===== */
+
+/* 공자 히어로 섹션 - 대나무 숲과 서책 배경 */
+.hero-modern {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 공자 - 서책 배경 */
+#confucius .hero-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(90deg, transparent 0%, transparent 48%, rgba(139, 38, 53, 0.1) 49%, rgba(139, 38, 53, 0.1) 51%, transparent 52%, transparent 100%),
+        linear-gradient(90deg, transparent 0%, transparent 18%, rgba(139, 38, 53, 0.08) 19%, rgba(139, 38, 53, 0.08) 21%, transparent 22%, transparent 100%),
+        linear-gradient(90deg, transparent 0%, transparent 68%, rgba(139, 38, 53, 0.08) 69%, rgba(139, 38, 53, 0.08) 71%, transparent 72%, transparent 100%);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* 노자 - 물결 패턴 */
+#laozi .hero-modern::before,
+.hero-laozi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 50px,
+            rgba(44, 95, 111, 0.08) 50px,
+            rgba(44, 95, 111, 0.08) 52px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 30px,
+            rgba(127, 205, 205, 0.06) 30px,
+            rgba(127, 205, 205, 0.06) 32px
+        );
+    opacity: 0.4;
+    z-index: 1;
+}
+
+/* 석가모니 - 연꽃 패턴 */
+#buddha .hero-modern::before,
+.hero-buddha::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(217, 118, 56, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(139, 107, 183, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(217, 118, 56, 0.06) 0%, transparent 30%);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* 공자 - 대나무 장식 */
+#confucius .hero-modern::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    width: 200px;
+    height: 400px;
+    background:
+        /* 대나무 줄기 */
+        linear-gradient(180deg,
+            transparent 0%,
+            transparent 20%,
+            rgba(76, 114, 29, 0.3) 21%,
+            rgba(76, 114, 29, 0.3) 30%,
+            transparent 31%,
+            transparent 50%,
+            rgba(76, 114, 29, 0.3) 51%,
+            rgba(76, 114, 29, 0.3) 60%,
+            transparent 61%,
+            transparent 80%,
+            rgba(76, 114, 29, 0.3) 81%,
+            rgba(76, 114, 29, 0.3) 90%,
+            transparent 91%
+        );
+    z-index: 2;
+    opacity: 0.6;
+    animation: bambooSway 4s ease-in-out infinite;
+}
+
+/* 노자 - 구름 장식 */
+#laozi .hero-modern::after,
+.hero-laozi::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 300px;
+    height: 150px;
+    background:
+        radial-gradient(ellipse at 30% 50%, rgba(127, 205, 205, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 50%, rgba(127, 205, 205, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 70%, rgba(208, 240, 240, 0.2) 0%, transparent 50%);
+    z-index: 2;
+    opacity: 0.7;
+    animation: cloudFloat 8s ease-in-out infinite;
+}
+
+@keyframes cloudFloat {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(30px) translateY(-10px);
+    }
+}
+
+/* 석가모니 - 빛 광선 장식 */
+#buddha .hero-modern::after,
+.hero-buddha::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    transform: translateX(-50%);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(232, 217, 243, 0.3) 0%, transparent 60%),
+        conic-gradient(from 0deg at 50% 0%,
+            transparent 0deg,
+            rgba(139, 107, 183, 0.1) 30deg,
+            transparent 60deg,
+            rgba(217, 118, 56, 0.1) 90deg,
+            transparent 120deg,
+            rgba(139, 107, 183, 0.1) 150deg,
+            transparent 180deg
+        );
+    z-index: 2;
+    opacity: 0.5;
+    animation: lightPulse 6s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+@keyframes bambooSway {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    50% {
+        transform: translateX(10px) rotate(2deg);
+    }
+}
+
+/* 공자 - 붓글씨 장식 */
+#confucius .hero-modern .hero-text::before {
+    content: '仁';
+    position: absolute;
+    top: 10%;
+    right: -50px;
+    font-size: 15rem;
+    font-weight: 700;
+    color: rgba(212, 175, 55, 0.05);
+    font-family: 'Noto Serif KR', serif;
+    z-index: 0;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* 노자 - 붓글씨 장식 */
+#laozi .hero-modern .hero-text::before,
+.hero-laozi .hero-text::before {
+    content: '道';
+    position: absolute;
+    top: 10%;
+    right: -50px;
+    font-size: 15rem;
+    font-weight: 700;
+    color: rgba(127, 205, 205, 0.08);
+    font-family: 'Noto Serif KR', serif;
+    z-index: 0;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* 석가모니 - 붓글씨 장식 */
+#buddha .hero-modern .hero-text::before,
+.hero-buddha .hero-text::before {
+    content: '覺';
+    position: absolute;
+    top: 10%;
+    right: -50px;
+    font-size: 15rem;
+    font-weight: 700;
+    color: rgba(139, 107, 183, 0.08);
+    font-family: 'Noto Serif KR', serif;
+    z-index: 0;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* 이순신 히어로 - 파도와 거북선 */
+.hero-yisunsin .hero-background::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 40px,
+            rgba(255, 255, 255, 0.03) 40px,
+            rgba(255, 255, 255, 0.03) 80px
+        ),
+        repeating-linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.05) 0px,
+            transparent 20px,
+            transparent 40px,
+            rgba(255, 255, 255, 0.05) 40px
+        );
+    animation: waveMove 8s linear infinite;
+}
+
+@keyframes waveMove {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+    100% {
+        background-position: 80px 0, 0 40px;
+    }
+}
+
+/* 이순신 - 거북선 실루엣 */
+.hero-yisunsin .hero-content::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: 5%;
+    width: 300px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.1);
+    clip-path: polygon(
+        20% 60%, 30% 50%, 40% 45%, 50% 40%,
+        60% 45%, 70% 50%, 80% 60%,
+        85% 70%, 85% 85%, 15% 85%, 15% 70%
+    );
+    z-index: 0;
+    animation: shipFloat 6s ease-in-out infinite;
+}
+
+@keyframes shipFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}
+
+/* 김치 히어로 - 배추와 고추 패턴 */
+.hero-kimchi .hero-background {
+    background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 50%, #087f5b 100%);
+}
+
+.hero-kimchi .hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 60px,
+            rgba(255, 255, 255, 0.03) 60px,
+            rgba(255, 255, 255, 0.03) 120px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 60px,
+            rgba(0, 0, 0, 0.03) 60px,
+            rgba(0, 0, 0, 0.03) 120px
+        );
+    opacity: 0.5;
+}
+
+/* 김치 - 옹기 장식 */
+.hero-kimchi .hero-content::before {
+    content: '沈';
+    position: absolute;
+    top: 10%;
+    right: -50px;
+    font-size: 15rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.08);
+    font-family: 'Noto Serif KR', serif;
+    z-index: 0;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* 섹션 배경 장식 */
+.quote-collection {
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-collection::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.quote-collection::after {
+    content: '論語';
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+    font-size: 8rem;
+    font-weight: 700;
+    color: rgba(139, 38, 53, 0.03);
+    font-family: 'Noto Serif KR', serif;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 이순신 명언 섹션 배경 */
+#yisunsin .quote-collection::after {
+    content: '亂中日記';
+    color: rgba(30, 58, 95, 0.03);
+}
+
+/* 인용문 카드 프리미엄 효과 */
+.quote-card-academic {
+    position: relative;
+    overflow: visible;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quote-card-academic::before {
+    content: '"';
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    font-size: 8rem;
+    font-family: Georgia, serif;
+    color: var(--accent);
+    opacity: 0.1;
+    line-height: 1;
+    z-index: 0;
+}
+
+.quote-card-academic:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(212, 175, 55, 0.2);
+}
+
+#yisunsin .quote-card-academic:hover {
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(44, 95, 141, 0.2);
+}
+
+/* 일화 섹션 - 두루마리 효과 */
+.anecdote-item {
+    position: relative;
+    background:
+        linear-gradient(to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(245, 241, 232, 0.5) 5%,
+            rgba(245, 241, 232, 0.9) 10%,
+            rgba(255, 255, 255, 1) 15%,
+            rgba(255, 255, 255, 1) 85%,
+            rgba(245, 241, 232, 0.9) 90%,
+            rgba(245, 241, 232, 0.5) 95%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 38, 53, 0.01) 2px,
+            rgba(139, 38, 53, 0.01) 4px
+        );
+    border-left: 3px solid var(--accent-light);
+    border-right: 3px solid var(--accent-light);
+}
+
+.anecdote-item::before,
+.anecdote-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(212, 175, 55, 0.2) 50%,
+        transparent 100%);
+}
+
+.anecdote-item::before {
+    top: 0;
+}
+
+.anecdote-item::after {
+    bottom: 0;
+}
+
+/* 철학 카드 - 입체감 */
+.philosophy-card {
+    position: relative;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(250, 248, 245, 1) 100%
+        );
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    overflow: hidden;
+}
+
+.philosophy-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(212, 175, 55, 0.05) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.philosophy-card:hover::before {
+    opacity: 1;
+    animation: cardGlow 2s ease-in-out infinite;
+}
+
+@keyframes cardGlow {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+}
+
+.philosophy-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.05);
+    pointer-events: none;
+}
+
+/* 이순신 카드 색상 */
+#yisunsin .philosophy-card {
+    border-color: rgba(44, 95, 141, 0.2);
+}
+
+#yisunsin .philosophy-card::before {
+    background: radial-gradient(
+        circle at center,
+        rgba(44, 95, 141, 0.05) 0%,
+        transparent 50%
+    );
+}
+
+/* 아이콘 3D 효과 */
+.card-icon-large {
+    position: relative;
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+}
+
+.philosophy-card:hover .card-icon-large {
+    transform: scale(1.1) rotate(5deg);
+    text-shadow:
+        3px 3px 6px rgba(0, 0, 0, 0.15),
+        0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+#yisunsin .card-icon-large {
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(44, 95, 141, 0.3);
+}
+
+#yisunsin .philosophy-card:hover .card-icon-large {
+    text-shadow:
+        3px 3px 6px rgba(0, 0, 0, 0.15),
+        0 0 30px rgba(44, 95, 141, 0.5);
+}
+
+/* 참고문헌 섹션 - 오래된 책 느낌 */
+.references {
+    position: relative;
+    background:
+        linear-gradient(135deg, #f8f6f1 0%, #e8e4dc 100%),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 38, 53, 0.02) 2px,
+            rgba(139, 38, 53, 0.02) 4px
+        );
+}
+
+.references::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(139, 38, 53, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.reference-list li {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.reference-list li::before {
+    content: '📚';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.reference-list li:hover {
+    transform: translateX(10px);
+    background: linear-gradient(90deg,
+        rgba(212, 175, 55, 0.05) 0%,
+        white 10%,
+        white 100%
+    );
+}
+
+.reference-list li:hover::before {
+    opacity: 1;
+    left: -25px;
+}
+
+/* 스크롤 진행 표시기 */
+.scroll-progress {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--primary-red));
+    z-index: 999;
+    transition: width 0.1s ease;
+}
+
+#yisunsin ~ .scroll-progress {
+    background: linear-gradient(90deg, var(--ocean), var(--navy));
+}
+
+/* 섹션 타이틀 강화 */
+.section-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    transition: width 0.6s ease;
+}
+
+.section-title:hover::after {
+    width: 100%;
+}
+
+/* 타임라인 강화 */
+.timeline-item {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg,
+        var(--accent-light),
+        var(--accent)
+    );
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 8px;
+    width: 15px;
+    height: 15px;
+    background: var(--accent);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover::after {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.3);
+}
+
+/* 페이지 로딩 애니메이션 */
+@keyframes pageLoad {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.character-content.active > * {
+    animation: pageLoad 0.8s ease-out forwards;
+}
+
+.character-content.active > *:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.character-content.active > *:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.character-content.active > *:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* 마우스 오버 글로우 효과 */
+.quote-original,
+.anecdote-title,
+.card-title-large {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.quote-original:hover,
+.anecdote-title:hover,
+.card-title-large:hover {
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+#yisunsin .quote-original:hover,
+#yisunsin .anecdote-title:hover,
+#yisunsin .card-title-large:hover {
+    color: var(--ocean);
+    text-shadow: 0 0 20px rgba(44, 95, 141, 0.3);
+}
+
+/* 반응형 조정 */
+@media screen and (max-width: 768px) {
+    .hero-modern::after {
+        width: 100px;
+        height: 200px;
+        right: 2%;
+    }
+
+    .hero-modern .hero-content::before,
+    .quote-collection::after {
+        font-size: 5rem;
+    }
+
+    .hero-yisunsin .hero-content::before {
+        width: 150px;
+        height: 100px;
+    }
+
+    .reference-list li::before {
+        display: none;
+    }
+
+    .reference-list li:hover {
+        transform: translateX(5px);
+    }
+}
+
+/* 프린트 시 장식 제거 */
+@media print {
+    .hero-modern::before,
+    .hero-modern::after,
+    .quote-collection::before,
+    .quote-collection::after,
+    .anecdote-item::before,
+    .anecdote-item::after,
+    .philosophy-card::before,
+    .philosophy-card::after {
+        display: none;
+    }
+}
+
+/* 다크모드 대응 (선택적) */
+@media (prefers-color-scheme: dark) {
+    .anecdote-item {
+        background:
+            linear-gradient(to bottom,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(40, 40, 40, 0.5) 5%,
+                rgba(30, 30, 30, 0.9) 10%,
+                rgba(20, 20, 20, 1) 15%,
+                rgba(20, 20, 20, 1) 85%,
+                rgba(30, 30, 30, 0.9) 90%,
+                rgba(40, 40, 40, 0.5) 95%,
+                rgba(0, 0, 0, 0) 100%
+            );
+    }
+}
+
+/* 인쇄물 품질 향상 */
+@page {
+    margin: 2cm;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+/* ===== Clean Version - 배경 장식 제거 및 개선 ===== */
+
+/* 모든 배경 장식 제거 */
+.hero-modern::before,
+.hero-modern::after,
+.hero-modern .hero-content::before,
+.hero-yisunsin .hero-background::after,
+.hero-yisunsin .hero-content::before,
+.quote-collection::before,
+.quote-collection::after,
+.anecdote-item::before,
+.anecdote-item::after,
+.philosophy-card::before,
+.philosophy-card::after,
+.references::before {
+    display: none !important;
+}
+
+/* 일화 섹션 배경 수정 */
+.anecdote-item {
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%) !important;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+}
+
+#yisunsin .anecdote-item {
+    border-left-color: var(--ocean);
+}
+
+#kimchi .anecdote-item {
+    border-left-color: #c92a2a;
+}
+
+/* 출처 링크 스타일 */
+.anecdote-source a,
+.quote-source-link {
+    color: inherit !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.anecdote-source a:hover,
+.quote-source-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+
+.anecdote-source a:hover .quote-source,
+.quote-source-link:hover .quote-source {
+    background: var(--accent);
+    color: white;
+}
+
+#yisunsin .anecdote-source a:hover .quote-source,
+#yisunsin .quote-source-link:hover .quote-source {
+    background: var(--ocean);
+    color: white;
+}
+
+/* 일화 출처 링크 추가 스타일 */
+.anecdote-source a {
+    color: var(--accent) !important;
+    border-bottom: 1px dashed var(--accent);
+}
+
+#yisunsin .anecdote-source a {
+    color: var(--ocean) !important;
+    border-bottom-color: var(--ocean);
+}
+
+.anecdote-source a:hover {
+    color: var(--primary-red) !important;
+    border-bottom-color: var(--primary-red);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+#yisunsin .anecdote-source a:hover {
+    color: var(--navy) !important;
+    border-bottom-color: var(--navy);
+    background: rgba(44, 95, 141, 0.05);
+}
+
+#kimchi .anecdote-source a {
+    color: #c92a2a !important;
+    border-bottom-color: #c92a2a;
+}
+
+#kimchi .anecdote-source a:hover {
+    color: #862e19 !important;
+    border-bottom-color: #862e19;
+    background: rgba(201, 42, 42, 0.05);
+}
+
+#kimchi .anecdote-source a:hover .quote-source,
+#kimchi .quote-source-link:hover .quote-source {
+    background: #c92a2a;
+    color: white;
+}
+
+/* 히어로 이미지 스타일 */
+.hero-image-container {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 280px;
+    height: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 5px solid rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 이미지 로딩 전 플레이스홀더 */
+.hero-image-container::before {
+    content: '📷';
+    font-size: 4rem;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 1;
+}
+
+.hero-portrait {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image-container:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.hero-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.hero-food {
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 3D 갤러리 섹션 */
+.gallery-3d {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 5rem 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item-image {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 각 사상가별 갤러리 배경 */
+#confucius .gallery-item-image {
+    background: linear-gradient(135deg, var(--confucius-light) 0%, var(--confucius-accent) 100%);
+}
+
+#laozi .gallery-item-image {
+    background: linear-gradient(135deg, var(--laozi-light) 0%, var(--laozi-accent) 100%);
+}
+
+#buddha .gallery-item-image {
+    background: linear-gradient(135deg, var(--buddha-light) 0%, var(--buddha-accent) 100%);
+}
+
+#yisunsin .gallery-item-image {
+    background: linear-gradient(135deg, var(--steel) 0%, var(--ocean) 100%);
+}
+
+#kimchi .gallery-item-image {
+    background: linear-gradient(135deg, #ff8787 0%, #c92a2a 50%, #087f5b 100%);
+}
+
+.gallery-item-icon {
+    font-size: 5rem;
+    color: white;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.gallery-item-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.9rem;
+    color: white;
+    opacity: 0.7;
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.gallery-item-info {
+    padding: 1.5rem;
+}
+
+.gallery-item-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.gallery-item-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.gallery-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--accent);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 각 사상가별 갤러리 뱃지 색상 */
+#confucius .gallery-badge {
+    color: var(--confucius-primary);
+}
+
+#laozi .gallery-badge {
+    color: var(--laozi-primary);
+}
+
+#buddha .gallery-badge {
+    color: var(--buddha-primary);
+}
+
+#yisunsin .gallery-badge {
+    color: var(--ocean);
+}
+
+#kimchi .gallery-badge {
+    color: #c92a2a;
+}
+
+/* 3D 뷰어 모달 */
+.viewer-3d-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.viewer-3d-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.viewer-3d-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.viewer-3d-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.viewer-3d-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-serif);
+}
+
+.viewer-3d-close {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.viewer-3d-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+    transform: rotate(90deg);
+}
+
+.viewer-3d-frame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem 2rem;
+}
+
+.viewer-3d-placeholder {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.viewer-3d-placeholder-icon {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.viewer-3d-placeholder-text {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.viewer-3d-placeholder-desc {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* 3D 이미지 스타일 (추후 실제 이미지 추가 시) */
+.viewer-3d-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* 스크롤 탑 버튼 */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#yisunsin .scroll-to-top {
+    background: var(--ocean);
+}
+
+#kimchi .scroll-to-top {
+    background: #c92a2a;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: var(--primary-red);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+#yisunsin .scroll-to-top:hover {
+    background: var(--navy);
+}
+
+#kimchi .scroll-to-top:hover {
+    background: #862e19;
+}
+
+/* 모바일 햄버거 메뉴 */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .character-nav .nav-tabs {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: white;
+        flex-direction: column;
+        padding: 2rem 0;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .character-nav .nav-tabs.mobile-open {
+        left: 0;
+    }
+
+    .character-nav .nav-tab {
+        width: 100%;
+        justify-content: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+        position: relative;
+    }
+}
+
+/* CTA (Call to Action) 버튼 */
+.cta-section {
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+    padding: 3rem 0;
+    text-align: center;
+    margin: 4rem 0;
+    border-radius: 16px;
+}
+
+/* 각 사상가별 CTA 배경 */
+#confucius .cta-section {
+    background: linear-gradient(135deg, var(--confucius-accent) 0%, var(--confucius-primary) 100%);
+}
+
+#laozi .cta-section {
+    background: linear-gradient(135deg, var(--laozi-accent) 0%, var(--laozi-primary) 100%);
+}
+
+#buddha .cta-section {
+    background: linear-gradient(135deg, var(--buddha-accent) 0%, var(--buddha-primary) 100%);
+}
+
+#yisunsin .cta-section {
+    background: linear-gradient(135deg, var(--steel) 0%, var(--ocean) 100%);
+}
+
+#kimchi .cta-section {
+    background: linear-gradient(135deg, #ff8787 0%, #c92a2a 100%);
+}
+
+.cta-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn-primary {
+    background: white;
+    color: var(--accent);
+}
+
+/* 각 사상가별 CTA 버튼 색상 */
+#confucius .cta-btn-primary {
+    color: var(--confucius-primary);
+}
+
+#laozi .cta-btn-primary {
+    color: var(--laozi-primary);
+}
+
+#buddha .cta-btn-primary {
+    color: var(--buddha-primary);
+}
+
+#yisunsin .cta-btn-primary {
+    color: var(--ocean);
+}
+
+#kimchi .cta-btn-primary {
+    color: #c92a2a;
+}
+
+.cta-btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cta-btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-btn-secondary:hover {
+    background: white;
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* 각 사상가별 CTA 버튼 호버 색상 */
+#confucius .cta-btn-secondary:hover {
+    color: var(--confucius-primary);
+}
+
+#laozi .cta-btn-secondary:hover {
+    color: var(--laozi-primary);
+}
+
+#buddha .cta-btn-secondary:hover {
+    color: var(--buddha-primary);
+}
+
+#yisunsin .cta-btn-secondary:hover {
+    color: var(--ocean);
+}
+
+#kimchi .cta-btn-secondary:hover {
+    color: #c92a2a;
+}
+
+/* 플로팅 구매 버튼 */
+.floating-purchase {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.floating-purchase.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.floating-purchase-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+#yisunsin .floating-purchase-btn {
+    background: var(--ocean);
+}
+
+#kimchi .floating-purchase-btn {
+    background: #c92a2a;
+}
+
+.floating-purchase-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.floating-purchase-btn::before {
+    content: '🛒';
+    font-size: 1.3rem;
+}
+
+/* SNS 공유 버튼 */
+.share-buttons {
+    position: fixed;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    z-index: 999;
+}
+
+.share-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: white;
+}
+
+.share-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.share-btn.twitter {
+    background: #1DA1F2;
+}
+
+.share-btn.facebook {
+    background: #1877F2;
+}
+
+.share-btn.kakao {
+    background: #FEE500;
+    color: #3C1E1E;
+}
+
+.share-btn.link {
+    background: var(--accent);
+}
+
+#yisunsin .share-btn.link {
+    background: var(--ocean);
+}
+
+#kimchi .share-btn.link {
+    background: #c92a2a;
+}
+
+@media screen and (max-width: 1024px) {
+    .share-buttons {
+        left: 15px;
+    }
+
+    .share-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .share-buttons {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        left: auto;
+        top: auto;
+        transform: none;
+        flex-direction: row;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .share-btn {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* 푸터 개선 스타일 */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    margin-top: 1rem;
+}
+
+.footer-heading {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.footer-contact, .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li, .footer-links li {
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-links .coming-soon {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-image-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: 200px;
+        height: 230px;
+        margin: 0 auto 2rem;
+    }
+
+    .hero-image-container:hover {
+        transform: scale(1.05);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .cta-section {
+        margin: 2rem 0;
+        padding: 2rem 1rem;
+        border-radius: 12px;
+    }
+
+    .cta-title {
+        font-size: 1.5rem;
+    }
+
+    .cta-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .floating-purchase {
+        bottom: 80px;
+    }
+
+    .floating-purchase-btn {
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+    }
+}
+
+/* 반응형 */
+@media screen and (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .viewer-3d-content {
+        width: 95%;
+        height: 70vh;
+    }
+
+    .viewer-3d-header {
+        padding: 1rem;
+    }
+
+    .viewer-3d-title {
+        font-size: 1.2rem;
+    }
+
+    .viewer-3d-frame {
+        padding: 3rem 1rem 1rem;
+    }
+
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
+
+/* 참고문헌 링크 스타일 개선 */
+.reference-list li a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.reference-list li a:hover {
+    color: var(--primary-red);
+    border-bottom-color: var(--primary-red);
+}
+
+/* 스크롤 시 부드러운 등장 */
+.gallery-item {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: none;
+}
+
+.gallery-item.visible {
+    animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery-item:nth-child(1).visible {
+    animation-delay: 0.1s;
+}
+
+.gallery-item:nth-child(2).visible {
+    animation-delay: 0.2s;
+}
+
+.gallery-item:nth-child(3).visible {
+    animation-delay: 0.3s;
+}
+
+.gallery-item:nth-child(4).visible {
+    animation-delay: 0.4s;
+}
+
+.gallery-item:nth-child(5).visible {
+    animation-delay: 0.5s;
+}
+
+.gallery-item:nth-child(6).visible {
+    animation-delay: 0.6s;
+}
+/* ===== UX Enhancement Styles ===== */
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Bookmark Toggle Button ===== */
+.bookmark-toggle {
+    position: relative;
+    background: white;
+    border: 2px solid #8B2635;
+    color: #8B2635;
+    padding: 0.5rem 0.875rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.bookmark-toggle:hover {
+    background: #8B2635;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 38, 53, 0.3);
+}
+
+.bookmark-toggle:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .bookmark-toggle {
+        padding: 0.4rem 0.75rem;
+        font-size: 1rem;
+    }
+}
+
+/* ===== Lazy Loading Styles ===== */
+
+/* 이미지 Lazy Loading */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+img.error {
+    opacity: 0.3;
+    filter: grayscale(100%);
+}
+
+/* 콘텐츠 Lazy Loading */
+.lazy-content {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.lazy-content.content-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Lazy Item 애니메이션 */
+.lazy-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.lazy-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 스켈레톤 로딩 (이미지 로드 전) */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* CTA Section Animations */
+.cta-section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced CTA Button Styles */
+.cta-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Button pulse animation for primary CTA */
+.cta-btn-primary {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(196, 30, 58, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(196, 30, 58, 0);
+    }
+}
+
+.cta-btn-primary:hover {
+    animation: none;
+}
+
+/* Navigation Tabs Enhancement */
+.nav-tab {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #c41e3a, #d4af37);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-tab:hover::after,
+.nav-tab.active::after {
+    width: 80%;
+}
+
+.nav-tab:hover {
+    transform: translateY(-2px);
+}
+
+/* Gallery Item Hover Effects */
+.gallery-item {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item-icon {
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Quote Cards Enhancement */
+.quote-card {
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.quote-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.05), rgba(212, 175, 55, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: inherit;
+}
+
+.quote-card:hover::before {
+    opacity: 1;
+}
+
+.quote-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading Animation for Images */
+.hero-portrait,
+.gallery-item-image img {
+    animation: imageLoad 0.6s ease-out;
+}
+
+@keyframes imageLoad {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c41e3a, #d4af37);
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* Fade-in Animation for Sections */
+.section {
+    animation: sectionFadeIn 0.8s ease-out;
+}
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Character Badge Pulse */
+.character-badge {
+    animation: badgePulse 3s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+    }
+}
+
+/* Accessibility: Focus Styles */
+.cta-btn:focus,
+.nav-tab:focus,
+button:focus,
+a:focus {
+    outline: 3px solid #d4af37;
+    outline-offset: 3px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+    .cta-btn {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+
+    .nav-tab:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .cta-btn:hover,
+    .gallery-item:hover,
+    .quote-card:hover {
+        transform: none;
+    }
+
+    .cta-btn:active {
+        transform: scale(0.98);
+    }
+
+    .gallery-item:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Loading State */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border: 3px solid rgba(212, 175, 55, 0.3);
+    border-top-color: #d4af37;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Back to Top Button (Optional) */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #c41e3a, #d4af37);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-top::before {
+    content: '↑';
+    font-size: 24px;
+    line-height: 50px;
+}
+
+/* Stagger Animation for Multiple Elements */
+.stagger-animation > * {
+    animation: staggerFadeIn 0.6s ease-out backwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes staggerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hero Section Parallax Effect (Optional) */
+.hero-modern {
+    position: relative;
+}
+
+.hero-background {
+    transition: transform 0.5s ease-out;
+}
+
+/* Tooltip Enhancement */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Shimmer Effect for Loading Content */
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .nav-tabs,
+    .cta-section,
+    .back-to-top,
+    .scroll-progress {
+        display: none !important;
+    }
+
+    .hero-modern,
+    .section {
+        page-break-inside: avoid;
+    }
+}

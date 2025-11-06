@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 페이지를 찾을 수 없습니다 | 동양 사상가 NFC 키링</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #1a1a1a;
+        }
+
+        .error-container {
+            max-width: 600px;
+            text-align: center;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-code {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, #8B2635 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .error-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .error-description {
+            font-size: 1.1rem;
+            color: #6a6a6a;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .error-quote {
+            font-size: 1rem;
+            color: #8B2635;
+            font-style: italic;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 38, 53, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-left: 4px solid #8B2635;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .error-quote-author {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #4a4a4a;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8B2635 0%, #D4AF37 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 38, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #8B2635;
+            border: 2px solid #8B2635;
+        }
+
+        .btn-secondary:hover {
+            background: #8B2635;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .character-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .character-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .character-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .icon-confucius {
+            background: linear-gradient(135deg, #8B2635 0%, #D4AF37 100%);
+        }
+
+        .icon-laozi {
+            background: linear-gradient(135deg, #2C5F6F 0%, #7FCDCD 100%);
+        }
+
+        .icon-buddha {
+            background: linear-gradient(135deg, #D97638 0%, #8B6BB7 100%);
+        }
+
+        .countdown {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #6a6a6a;
+        }
+
+        @media (max-width: 640px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            .error-title {
+                font-size: 1.5rem;
+            }
+
+            .error-description {
+                font-size: 1rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">페이지를 찾을 수 없습니다</h1>
+        <p class="error-description">
+            요청하신 페이지가 존재하지 않거나 이동되었습니다.
+        </p>
+        <p class="error-description">
+            Page not found or has been moved.
+        </p>
+
+        <div class="error-quote" id="errorQuote">
+            "길을 잃었다면, 길을 찾는 과정도 배움이다."
+            <span class="error-quote-author">— 공자 (孔子)</span>
+        </div>
+
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary">
+                🏠 홈으로 돌아가기
+            </a>
+            <button onclick="history.back()" class="btn btn-secondary">
+                ← 이전 페이지
+            </button>
+        </div>
+
+        <div class="character-icons">
+            <a href="/#confucius" class="character-icon icon-confucius" title="공자">
+                仁
+            </a>
+            <a href="/#laozi" class="character-icon icon-laozi" title="노자">
+                道
+            </a>
+            <a href="/#buddha" class="character-icon icon-buddha" title="석가모니">
+                覺
+            </a>
+        </div>
+
+        <div class="countdown" id="countdown">
+            5초 후 자동으로 홈페이지로 이동합니다...
+        </div>
+    </div>
+
+    <script>
+        // 랜덤 명언 표시
+        const quotes = [
+            {
+                text: "길을 잃었다면, 길을 찾는 과정도 배움이다.",
+                author: "공자 (孔子)",
+                gradient: "linear-gradient(135deg, rgba(139, 38, 53, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%)",
+                border: "#8B2635"
+            },
+            {
+                text: "길을 잃은 자는 다시 길을 찾기 마련이다. 조급해하지 말라.",
+                author: "노자 (老子)",
+                gradient: "linear-gradient(135deg, rgba(44, 95, 111, 0.05) 0%, rgba(127, 205, 205, 0.05) 100%)",
+                border: "#2C5F6F"
+            },
+            {
+                text: "길을 찾는 것도 수행이요, 잃어버린 것도 깨달음의 기회다.",
+                author: "석가모니 (釋迦牟尼)",
+                gradient: "linear-gradient(135deg, rgba(217, 118, 56, 0.05) 0%, rgba(139, 107, 183, 0.05) 100%)",
+                border: "#D97638"
+            }
+        ];
+
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        const quoteElement = document.getElementById('errorQuote');
+        quoteElement.innerHTML = `"${randomQuote.text}"<span class="error-quote-author">— ${randomQuote.author}</span>`;
+        quoteElement.style.background = randomQuote.gradient;
+        quoteElement.style.borderLeftColor = randomQuote.border;
+
+        // 5초 후 자동 리다이렉트
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            countdown--;
+            if (countdown > 0) {
+                countdownElement.textContent = `${countdown}초 후 자동으로 홈페이지로 이동합니다...`;
+            } else {
+                clearInterval(timer);
+                window.location.href = '/';
+            }
+        }, 1000);
+
+        // 클릭하면 타이머 취소
+        document.querySelector('.error-container').addEventListener('click', () => {
+            clearInterval(timer);
+            countdownElement.textContent = '자동 이동이 취소되었습니다.';
+        });
+    </script>
+</body>
+</html>
+

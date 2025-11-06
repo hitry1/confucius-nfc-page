@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initLanguageToggle();
     initScrollAnimations();
     detectURLParams();
+    handleHashNavigation(); // NFC 태그 지원
     initScrollProgress();
     initPremiumEffects();
     init3DViewer();
@@ -20,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initShareButtons();
     initFloatingPurchase();
 });
+
+// Hash 변경 감지 (뒤로 가기/앞으로 가기 대응)
+window.addEventListener('hashchange', handleHashNavigation);
 
 /**
  * 인물 선택 네비게이션 초기화
@@ -139,7 +143,7 @@ function detectURLParams() {
         updateToggleButton(currentLang);
     }
 
-    // 인물 설정
+    // 인물 설정 (Query Parameter)
     const characterParam = urlParams.get('character');
     if (characterParam) {
         const targetTab = document.querySelector(`[data-character="${characterParam}"]`);
@@ -154,6 +158,28 @@ function detectURLParams() {
         console.log('📱 NFC 태그를 통한 접속');
         // 분석 도구 이벤트 전송 가능
         // gtag('event', 'nfc_scan', { character: characterParam || 'confucius' });
+    }
+}
+
+/**
+ * Hash 기반 네비게이션 처리 (NFC 태그 지원)
+ */
+function handleHashNavigation() {
+    const hash = window.location.hash.replace('#', '');
+
+    if (!hash) {
+        // Hash가 없으면 기본값(공자) 표시
+        return;
+    }
+
+    // 유효한 인물인지 확인
+    const validCharacters = ['confucius', 'laozi', 'buddha'];
+    if (validCharacters.includes(hash)) {
+        const targetTab = document.querySelector(`[data-character="${hash}"]`);
+        if (targetTab && !targetTab.classList.contains('active')) {
+            targetTab.click();
+            console.log(`📱 Hash navigation: ${hash}`);
+        }
     }
 }
 
@@ -205,51 +231,27 @@ function initScrollAnimations() {
     }
 }
 
-/**
- * 페이지 공유 기능 (선택적)
- */
-function shareCharacter(characterName) {
-    if (navigator.share) {
-        navigator.share({
-            title: `${characterName} - 동양 문화 굿즈`,
-            text: `${characterName}의 이야기를 만나보세요`,
-            url: window.location.href
-        }).catch(function(error) {
-            console.log('공유 취소:', error);
-        });
-    } else {
-        // Web Share API를 지원하지 않는 경우 URL 복사
-        copyToClipboard(window.location.href);
-        alert('링크가 복사되었습니다!');
-    }
-}
-
-/**
- * 클립보드에 복사
- */
-function copyToClipboard(text) {
-    const tempInput = document.createElement('input');
-    tempInput.value = text;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand('copy');
-    document.body.removeChild(tempInput);
-}
 
 /**
  * 스크롤 진행 표시기
  */
 function initScrollProgress() {
-    // 진행 표시 바 생성
-    const progressBar = document.createElement('div');
-    progressBar.className = 'scroll-progress';
-    document.body.appendChild(progressBar);
+    // HTML에 이미 존재하는 프로그레스 바 사용
+    const progressBar = document.getElementById('scrollProgress');
+    if (!progressBar) return;
 
-    // 스크롤 이벤트
+    // 스크롤 이벤트 (throttle 적용으로 성능 개선)
+    let ticking = false;
     window.addEventListener('scroll', function() {
-        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (window.scrollY / windowHeight) * 100;
-        progressBar.style.width = scrolled + '%';
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
 }
 
@@ -625,5 +627,139 @@ function initFloatingPurchase() {
         } else {
             floatingBtn.classList.remove('visible');
         }
+    });
+}
+
+/**
+ * Register Service Worker for PWA support with update detection
+ */
+if ('serviceWorker' in navigator) {
+    let refreshing = false;
+
+    // Service Worker가 제어권을 가져갈 때 페이지 새로고침
+    navigator.serviceWorker.addEventListener('controllerchange', function() {
+        if (refreshing) return;
+        refreshing = true;
+        window.location.reload();
+    });
+
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+                console.log('✅ Service Worker registered successfully:', registration.scope);
+
+                // 업데이트 확인
+                registration.addEventListener('updatefound', function() {
+                    const newWorker = registration.installing;
+
+                    newWorker.addEventListener('statechange', function() {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // 새 버전 발견 - 사용자에게 알림 표시
+                            showUpdateNotification(newWorker);
+                        }
+                    });
+                });
+
+                // 주기적으로 업데이트 확인 (1시간마다)
+                setInterval(function() {
+                    registration.update();
+                }, 3600000);
+            })
+            .catch(function(error) {
+                console.log('❌ Service Worker registration failed:', error);
+            });
+    });
+}
+
+/**
+ * 업데이트 알림 표시 및 처리
+ */
+function showUpdateNotification(worker) {
+    // 업데이트 알림 생성
+    const notification = document.createElement('div');
+    notification.id = 'sw-update-notification';
+    notification.innerHTML = `
+        <div style="
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 10000;
+            max-width: 350px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            animation: slideInUp 0.3s ease-out;
+        ">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                <span style="font-size: 24px;">🎉</span>
+                <span style="font-weight: 600; font-size: 16px;">새 버전이 있습니다!</span>
+            </div>
+            <p style="margin: 0 0 15px 0; font-size: 14px; opacity: 0.95; line-height: 1.5;">
+                사이트가 업데이트되었습니다. 최신 버전을 사용하려면 새로고침하세요.
+            </p>
+            <div style="display: flex; gap: 10px;">
+                <button id="sw-update-btn" style="
+                    flex: 1;
+                    background: white;
+                    color: #667eea;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: transform 0.2s;
+                ">
+                    업데이트
+                </button>
+                <button id="sw-dismiss-btn" style="
+                    background: rgba(255,255,255,0.2);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                ">
+                    나중에
+                </button>
+            </div>
+        </div>
+        <style>
+            @keyframes slideInUp {
+                from {
+                    transform: translateY(100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            #sw-update-btn:hover {
+                transform: scale(1.05);
+            }
+            #sw-dismiss-btn:hover {
+                background: rgba(255,255,255,0.3);
+            }
+        </style>
+    `;
+
+    document.body.appendChild(notification);
+
+    // 업데이트 버튼 클릭 이벤트
+    document.getElementById('sw-update-btn').addEventListener('click', function() {
+        // 새 Service Worker에게 skipWaiting 메시지 전송
+        worker.postMessage({ type: 'SKIP_WAITING' });
+    });
+
+    // 나중에 버튼 클릭 이벤트
+    document.getElementById('sw-dismiss-btn').addEventListener('click', function() {
+        notification.remove();
     });
 }
