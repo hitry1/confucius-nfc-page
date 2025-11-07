@@ -143,14 +143,11 @@
     <!-- 인물 선택 네비게이션 바 -->
     <nav class="character-nav">
         <div class="nav-container">
-            <div class="brand-logo">
-                <span class="brand-text">道接</span>
-                <span class="brand-subtitle">Dojeop</span>
-            </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
-                ☰
-            </button>
-            <div class="nav-tabs">
+            <div class="nav-left">
+                <div class="brand-logo">
+                    <img src="images/doheop-logo.png" alt="道接 Dojeop" class="brand-logo-img">
+                </div>
+                <div class="nav-tabs">
                 <a href="#confucius" class="nav-tab active" data-character="confucius">
                     <span class="tab-icon">孔</span>
                     <span class="tab-name" data-ko="공자" data-en="Confucius">공자</span>
@@ -163,7 +160,11 @@
                     <span class="tab-icon">佛</span>
                     <span class="tab-name" data-ko="석가모니" data-en="Buddha">석가모니</span>
                 </a>
+                </div>
             </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                ☰
+            </button>
             <div class="nav-actions">
                 <button class="bookmark-toggle" id="bookmarkToggle" onclick="window.bookmarkManager.toggleBookmarkPanel()"
                         title="내 북마크" aria-label="Bookmarks">

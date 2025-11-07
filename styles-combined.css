@@ -138,24 +138,21 @@ body {
     font-size: 1rem;
 }
 
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+}
+
 .brand-logo {
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
+    align-items: center;
 }
 
-.brand-text {
-    font-size: 1.5rem;
-    letter-spacing: 0.05em;
-}
-
-.brand-subtitle {
-    font-size: 0.9rem;
-    font-weight: 500;
-    opacity: 0.8;
+.brand-logo-img {
+    height: 50px;
+    width: auto;
 }
 
 .nav-actions {

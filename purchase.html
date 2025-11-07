@@ -81,22 +81,13 @@
 
         .logo {
             display: flex;
-            align-items: baseline;
-            gap: 8px;
-            font-weight: 700;
-            color: var(--primary-blue);
+            align-items: center;
             text-decoration: none;
         }
 
-        .logo-text {
-            font-size: 28px;
-            letter-spacing: 0.05em;
-        }
-
-        .logo-subtitle {
-            font-size: 16px;
-            font-weight: 500;
-            opacity: 0.8;
+        .logo-img {
+            height: 45px;
+            width: auto;
         }
 
         .header-actions {
@@ -1003,8 +994,7 @@
     <header class="header">
         <div class="header-container">
             <a href="index.html" class="logo">
-                <span class="logo-text" data-ko="道接" data-en="道接">道接</span>
-                <span class="logo-subtitle" data-ko="Dojeop" data-en="Dojeop">Dojeop</span>
+                <img src="images/doheop-logo.png" alt="道接 Dojeop" class="logo-img">
             </a>
             <div class="header-actions">
                 <button class="lang-toggle" onclick="toggleLanguage()" aria-label="언어 변경 / Change language">
