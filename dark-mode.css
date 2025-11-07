@@ -1,215 +1,367 @@
-/* ===== High-Quality Dark Mode ===== */
+/* ===== Premium Dark Mode - High Quality Design ===== */
 
 /* Smooth transitions for all elements */
 body, nav, header, main, section, article, div, button, input, textarea {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-/* Dark Mode Styles */
+/* ===== Base Dark Mode Styles ===== */
 body.dark-mode {
-    background-color: #0a0a0a;
-    color: #e0e0e0;
+    background-color: #0d0d0d;
+    color: #e8e8e8;
 }
 
-/* Navigation Bar */
+/* ===== Navigation Bar ===== */
 body.dark-mode .character-nav {
-    background: rgba(20, 20, 20, 0.95);
-    border-bottom-color: #2a2a2a;
+    background: rgba(18, 18, 18, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
 }
 
 body.dark-mode .nav-tab {
-    color: #b0b0b0;
+    color: #b8b8b8;
 }
 
-body.dark-mode .nav-tab:hover,
+body.dark-mode .nav-tab:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
 body.dark-mode .nav-tab.active {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Hero Section */
+/* ===== Hero Section ===== */
 body.dark-mode .hero-modern {
-    background-color: #0a0a0a;
+    background-color: #0d0d0d;
 }
 
 body.dark-mode .gradient-overlay {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55));
 }
 
-body.dark-mode .hero-title,
-body.dark-mode .hero-subtitle,
+body.dark-mode .hero-title {
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .hero-subtitle {
+    color: #e8e8e8;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
 body.dark-mode .hero-meta {
-    color: #e0e0e0;
+    color: #d0d0d0;
 }
 
 body.dark-mode .character-badge {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Main Content Background */
+/* ===== Main Content Background ===== */
 body.dark-mode .main-modern {
-    background-color: #0a0a0a;
+    background-color: #0d0d0d;
 }
 
-/* Section Backgrounds */
+/* ===== Section Backgrounds ===== */
 body.dark-mode .section {
-    background-color: #121212;
+    background-color: #161616;
 }
 
-/* Quote Cards */
+body.dark-mode .section-title {
+    color: #f5f5f5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Quote Cards - Premium Design ===== */
 body.dark-mode .quote-card {
-    background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
-    border-color: #2a2a2a;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
 }
 
 body.dark-mode .quote-card:hover {
-    background: linear-gradient(135deg, #242424 0%, #2a2a2a 100%);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(135deg, #252525 0%, #2c2c2c 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
 }
 
 body.dark-mode .quote-text {
-    color: #e0e0e0;
+    color: #f0f0f0;
 }
 
 body.dark-mode .quote-author {
-    color: #a0a0a0;
+    color: #b0b0b0;
 }
 
-/* Gallery Items */
+/* Academic Quote Cards */
+body.dark-mode .quote-card-academic {
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .quote-card-academic:hover {
+    background: linear-gradient(135deg, #252525 0%, #2c2c2c 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .quote-original {
+    color: #e8e8e8;
+}
+
+body.dark-mode .quote-translation {
+    color: #d0d0d0;
+}
+
+body.dark-mode .quote-interpretation {
+    color: #c0c0c0;
+}
+
+/* Quote Source Styling - Enhanced Visibility */
+body.dark-mode .quote-source {
+    color: #9db3d4 !important;
+    font-weight: 500;
+}
+
+body.dark-mode .quote-source-link {
+    color: #9db3d4 !important;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(157, 179, 212, 0.3);
+}
+
+body.dark-mode .quote-source-link:hover {
+    color: #b8cbe6 !important;
+    border-bottom-color: rgba(157, 179, 212, 0.6);
+}
+
+body.dark-mode .quote-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Gallery Items - 3D Cultural Artifacts ===== */
+body.dark-mode .gallery-3d {
+    background-color: #161616;
+}
+
 body.dark-mode .gallery-item {
-    background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
-    border-color: #2a2a2a;
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode .gallery-item:hover {
-    background: linear-gradient(135deg, #242424 0%, #2a2a2a 100%);
+    background: linear-gradient(135deg, #252525 0%, #2c2c2c 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    transform: translateY(-4px);
 }
 
-body.dark-mode .gallery-item-title,
+body.dark-mode .gallery-item-title {
+    color: #f5f5f5 !important;
+}
+
 body.dark-mode .gallery-item-desc {
-    color: #e0e0e0;
+    color: #c8c8c8 !important;
 }
 
-/* Brand Concept Banner */
-body.dark-mode .brand-concept-banner {
-    background: linear-gradient(135deg, #2a1a1a 0%, #1a2a2a 50%, #2a1e2a 100%);
+body.dark-mode .gallery-item-icon {
+    opacity: 0.9;
 }
 
-/* Biography Section */
-body.dark-mode .bio-card {
-    background: #1a1a1a;
-    border-color: #2a2a2a;
+body.dark-mode .gallery-badge {
+    background: linear-gradient(135deg, rgba(139, 38, 53, 0.9), rgba(212, 66, 79, 0.9)) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-body.dark-mode .bio-title,
-body.dark-mode .bio-text {
-    color: #e0e0e0;
+body.dark-mode .gallery-item-3d {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
 }
 
-/* Navigation Buttons */
-body.dark-mode button {
-    background: rgba(255, 255, 255, 0.05);
-    color: #e0e0e0;
-    border-color: #2a2a2a;
+body.dark-mode .gallery-item-3d:hover {
+    background: linear-gradient(135deg, #252525 0%, #303030 100%) !important;
 }
 
-body.dark-mode button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #3a3a3a;
+/* ===== 3D Modal - Enhanced Design ===== */
+body.dark-mode .modal-3d {
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
 }
 
-/* Search Bar */
-body.dark-mode .search-container {
-    background: #1a1a1a;
-    border-color: #2a2a2a;
-}
-
-body.dark-mode .search-input {
-    background: #242424;
-    color: #e0e0e0;
-    border-color: #2a2a2a;
-}
-
-body.dark-mode .search-input::placeholder {
-    color: #6a6a6a;
-}
-
-/* Bookmark Panel */
-body.dark-mode .bookmark-panel {
-    background: #1a1a1a;
-    border-left-color: #2a2a2a;
-}
-
-body.dark-mode .bookmark-item {
-    background: #242424;
-    border-color: #2a2a2a;
-}
-
-body.dark-mode .bookmark-item:hover {
-    background: #2a2a2a;
-}
-
-/* Modal */
 body.dark-mode .modal-3d-content {
     background: #1a1a1a;
-    border-color: #2a2a2a;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
 }
 
 body.dark-mode .modal-3d-title {
-    color: #e0e0e0;
+    color: #f5f5f5;
 }
 
 body.dark-mode .modal-3d-instruction {
-    color: #a0a0a0;
+    color: #b8b8b8;
 }
 
 body.dark-mode .modal-3d-close {
     background: rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
+    color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 body.dark-mode .modal-3d-close:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
 }
 
-/* Footer */
+body.dark-mode .modal-3d-viewer-container {
+    background: #222222;
+    border-radius: 8px;
+}
+
+/* model-viewer background in dark mode */
+body.dark-mode model-viewer {
+    --poster-color: #222222;
+}
+
+/* ===== Brand Concept Banner ===== */
+body.dark-mode .brand-concept-banner {
+    background: linear-gradient(135deg, #2d1a1f 0%, #1a2d2d 50%, #2d1e2d 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .brand-concept-banner h2 {
+    color: #f5f5f5;
+}
+
+body.dark-mode .brand-concept-banner p {
+    color: #d0d0d0;
+}
+
+/* ===== Biography Section ===== */
+body.dark-mode .bio-card {
+    background: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .bio-title {
+    color: #f5f5f5;
+}
+
+body.dark-mode .bio-text {
+    color: #d0d0d0;
+}
+
+body.dark-mode .bio-text p {
+    color: #d0d0d0;
+}
+
+/* ===== Navigation Buttons ===== */
+body.dark-mode button {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* ===== Search Bar ===== */
+body.dark-mode .search-container {
+    background: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-input {
+    background: #252525;
+    color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .search-input::placeholder {
+    color: #808080;
+}
+
+body.dark-mode .search-input:focus {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: #2a2a2a;
+}
+
+/* ===== Bookmark Panel ===== */
+body.dark-mode .bookmark-panel {
+    background: #1a1a1a;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .bookmark-item {
+    background: #252525;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #d0d0d0;
+}
+
+body.dark-mode .bookmark-item:hover {
+    background: #2c2c2c;
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e8e8e8;
+}
+
+/* ===== Footer ===== */
 body.dark-mode footer {
-    background: #0a0a0a;
-    border-top-color: #2a2a2a;
-    color: #a0a0a0;
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #b0b0b0;
 }
 
-/* Links */
+body.dark-mode footer a {
+    color: #9db3d4;
+}
+
+body.dark-mode footer a:hover {
+    color: #b8cbe6;
+}
+
+/* ===== Links - Enhanced Visibility ===== */
 body.dark-mode a {
-    color: #7FCDCD;
+    color: #8fb8d4;
 }
 
 body.dark-mode a:hover {
-    color: #9FE0E0;
+    color: #a8cbe6;
 }
 
-/* Scrollbar */
+/* ===== Scrollbar - Premium Design ===== */
 body.dark-mode::-webkit-scrollbar {
     width: 12px;
-    background: #0a0a0a;
+    background: #0d0d0d;
 }
 
 body.dark-mode::-webkit-scrollbar-track {
     background: #1a1a1a;
-}
-
-body.dark-mode::-webkit-scrollbar-thumb {
-    background: #3a3a3a;
     border-radius: 6px;
 }
 
-body.dark-mode::-webkit-scrollbar-thumb:hover {
-    background: #4a4a4a;
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 6px;
+    border: 2px solid #1a1a1a;
 }
 
-/* Dark Mode Toggle Button */
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: #505050;
+}
+
+/* ===== Dark Mode Toggle Button ===== */
 .dark-mode-toggle {
     position: relative;
     padding: 0.5rem 1rem;
@@ -227,11 +379,108 @@ body.dark-mode::-webkit-scrollbar-thumb:hover {
 }
 
 body.dark-mode .dark-mode-toggle {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== Video Overlay for Dark Mode ===== */
+body.dark-mode .gradient-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55));
+}
+
+/* ===== Text Elements - Ensure High Contrast ===== */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #f5f5f5;
+}
+
+body.dark-mode p {
+    color: #d0d0d0;
+}
+
+body.dark-mode strong,
+body.dark-mode b {
+    color: #e8e8e8;
+}
+
+body.dark-mode em,
+body.dark-mode i {
+    color: #d8d8d8;
+}
+
+/* ===== Code and Preformatted Text ===== */
+body.dark-mode code,
+body.dark-mode pre {
+    background: #1e1e1e;
+    color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Blockquotes ===== */
+body.dark-mode blockquote {
+    border-left: 4px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+    color: #d0d0d0;
+}
+
+/* ===== Tables ===== */
+body.dark-mode table {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Video Overlay Adjustment for Dark Mode */
-body.dark-mode .gradient-overlay {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7));
+body.dark-mode th {
+    background: #1e1e1e;
+    color: #f5f5f5;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode td {
+    background: #161616;
+    color: #d0d0d0;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode tr:hover td {
+    background: #1a1a1a;
+}
+
+/* ===== Form Elements ===== */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #252525;
+    color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    background: #2a2a2a;
+    border-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+/* ===== Special Text Colors - Character Specific ===== */
+body.dark-mode [style*="color: #8B2635"],
+body.dark-mode [style*="color: rgb(139, 38, 53)"] {
+    color: #d66a7a !important;
+}
+
+body.dark-mode [style*="color: #2C5F6F"],
+body.dark-mode [style*="color: rgb(44, 95, 111)"] {
+    color: #5a9ab0 !important;
+}
+
+body.dark-mode [style*="color: #D97638"],
+body.dark-mode [style*="color: rgb(217, 118, 56)"] {
+    color: #e89860 !important;
 }
