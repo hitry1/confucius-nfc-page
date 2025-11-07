@@ -729,3 +729,146 @@ body.dark-mode [style*="background-color: #ffffff"] {
 body.dark-mode [style*="background: linear-gradient"][style*="#f"] {
     background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%) !important;
 }
+
+/* ===== Specific Element Fixes ===== */
+
+/* 3D Gallery Section */
+body.dark-mode .gallery-3d {
+    background: #161616 !important;
+}
+
+body.dark-mode .gallery-3d .section-title {
+    color: #f5f5f5;
+}
+
+/* Quote Interpretation (Korean explanation) */
+body.dark-mode .quote-interpretation {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #c0c0c0 !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+}
+
+/* References Section */
+body.dark-mode .references {
+    background: #161616 !important;
+}
+
+body.dark-mode .reference-category {
+    background: transparent;
+}
+
+body.dark-mode .reference-category h3 {
+    color: #f5f5f5;
+}
+
+body.dark-mode .reference-list li {
+    background: #1e1e1e !important;
+    border-left-color: rgba(255, 255, 255, 0.2);
+    color: #d0d0d0;
+}
+
+body.dark-mode .reference-list li:hover {
+    background: linear-gradient(90deg, #252525 0%, #2a2a2a 100%) !important;
+}
+
+body.dark-mode .reference-list li::before {
+    opacity: 0.6;
+}
+
+body.dark-mode .reference-list li em {
+    color: #e8e8e8;
+}
+
+/* References decorative element */
+body.dark-mode .references::before {
+    opacity: 0.03;
+}
+
+/* Copy button (if exists) */
+body.dark-mode .copy-btn,
+body.dark-mode [class*="copy"] {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .copy-btn:hover,
+body.dark-mode [class*="copy"]:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+}
+
+/* Bookmark icons and buttons */
+body.dark-mode .bookmark-icon,
+body.dark-mode .bookmark-toggle {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #e8e8e8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+body.dark-mode .bookmark-icon:hover,
+body.dark-mode .bookmark-toggle:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-mode .bookmark-count {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+/* Icon brightness fixes */
+body.dark-mode .nav-tab .tab-icon {
+    opacity: 0.9;
+}
+
+body.dark-mode .nav-tab:hover .tab-icon,
+body.dark-mode .nav-tab.active .tab-icon {
+    opacity: 1;
+}
+
+/* Gallery item badges and icons */
+body.dark-mode .gallery-item-icon {
+    opacity: 0.85;
+    filter: brightness(0.9);
+}
+
+/* Character badge */
+body.dark-mode .character-badge {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Additional quote card elements */
+body.dark-mode .quote-header {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure all section backgrounds are dark */
+body.dark-mode .section.quote-collection,
+body.dark-mode .section.philosophy,
+body.dark-mode .section.anecdotes {
+    background: #161616 !important;
+}
+
+/* Bio section */
+body.dark-mode .bio-section {
+    background: #161616 !important;
+}
+
+body.dark-mode .bio-card {
+    background: #1e1e1e !important;
+}
+
+/* Story section */
+body.dark-mode .story-section {
+    background: #161616 !important;
+}
+
+/* Timeline section background */
+body.dark-mode .timeline-section {
+    background: #161616 !important;
+}
