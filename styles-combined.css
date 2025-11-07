@@ -141,18 +141,20 @@ body {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    flex: 1;
+    gap: 1rem;
 }
 
 .brand-logo {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .brand-logo-img {
-    height: 50px;
+    height: 40px;
     width: auto;
+    max-width: 150px;
+    object-fit: contain;
 }
 
 .nav-actions {
