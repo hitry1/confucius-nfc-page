@@ -484,3 +484,248 @@ body.dark-mode [style*="color: #D97638"],
 body.dark-mode [style*="color: rgb(217, 118, 56)"] {
     color: #e89860 !important;
 }
+
+/* ===== Additional Background Fixes ===== */
+
+/* Main content areas */
+body.dark-mode .main-modern {
+    background: #0d0d0d !important;
+}
+
+body.dark-mode .container {
+    background: transparent;
+}
+
+/* All cards with white backgrounds */
+body.dark-mode .card,
+body.dark-mode .philosophy-card {
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .card:hover,
+body.dark-mode .philosophy-card:hover {
+    background: linear-gradient(135deg, #252525 0%, #2c2c2c 100%) !important;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Anecdote items */
+body.dark-mode .anecdote-item {
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .anecdote-item:hover {
+    background: linear-gradient(135deg, #252525 0%, #2c2c2c 100%) !important;
+}
+
+body.dark-mode .anecdote-title {
+    color: #f5f5f5;
+}
+
+body.dark-mode .anecdote-content p {
+    color: #d0d0d0;
+}
+
+/* Timeline items */
+body.dark-mode .timeline {
+    border-left-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .timeline-item {
+    background: transparent;
+}
+
+body.dark-mode .timeline-year {
+    color: #9db3d4;
+}
+
+body.dark-mode .timeline-title {
+    color: #f5f5f5;
+}
+
+body.dark-mode .timeline-desc {
+    color: #d0d0d0;
+}
+
+/* Story content */
+body.dark-mode .story-content {
+    background: transparent;
+}
+
+body.dark-mode .story-text {
+    color: #d0d0d0;
+}
+
+/* Hero decorative elements */
+body.dark-mode .hero-modern::before,
+body.dark-mode .hero-modern::after {
+    opacity: 0.15;
+}
+
+/* Gallery grid items */
+body.dark-mode .gallery-grid {
+    background: transparent;
+}
+
+body.dark-mode .gallery-item-image {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%) !important;
+}
+
+/* CTA Section */
+body.dark-mode .cta-section {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .cta-title {
+    color: #f5f5f5;
+}
+
+body.dark-mode .cta-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e8e8e8;
+}
+
+body.dark-mode .cta-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+/* Reference list */
+body.dark-mode .reference-list {
+    background: transparent;
+}
+
+body.dark-mode .reference-list li {
+    color: #d0d0d0;
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .reference-list a {
+    color: #9db3d4;
+}
+
+/* Card titles and text */
+body.dark-mode .card-title,
+body.dark-mode .card-title-large {
+    color: #f5f5f5;
+}
+
+body.dark-mode .card-text,
+body.dark-mode .card-text-long p {
+    color: #d0d0d0;
+}
+
+/* Quote collection decorative elements */
+body.dark-mode .quote-collection::before,
+body.dark-mode .quote-collection::after {
+    opacity: 0.03;
+}
+
+/* Purchase button */
+body.dark-mode .floating-purchase-btn {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e8e8e8;
+}
+
+body.dark-mode .floating-purchase-btn:hover {
+    background: linear-gradient(135deg, #303030 0%, #252525 100%);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Back to top button */
+body.dark-mode .back-to-top {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e8e8e8;
+}
+
+body.dark-mode .back-to-top:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+/* Loading states */
+body.dark-mode .loading {
+    background: #1e1e1e;
+}
+
+/* Tooltips */
+body.dark-mode [data-tooltip]::after {
+    background: #2a2a2a;
+    color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Skeleton loading */
+body.dark-mode .skeleton {
+    background: linear-gradient(90deg, #1e1e1e 25%, #252525 50%, #1e1e1e 75%);
+}
+
+/* Error states */
+body.dark-mode .error {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: rgba(220, 53, 69, 0.3);
+    color: #f8d7da;
+}
+
+/* Success states */
+body.dark-mode .success {
+    background: rgba(40, 167, 69, 0.1);
+    border-color: rgba(40, 167, 69, 0.3);
+    color: #d4edda;
+}
+
+/* Image placeholders */
+body.dark-mode .hero-image-container::before {
+    opacity: 0.3;
+}
+
+/* Gallery badges */
+body.dark-mode .gallery-badge {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Language toggle */
+body.dark-mode .lang-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e8e8e8;
+}
+
+body.dark-mode .lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+/* Bookmark toggle */
+body.dark-mode .bookmark-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e8e8e8;
+}
+
+body.dark-mode .bookmark-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+/* All remaining white backgrounds */
+body.dark-mode [style*="background: white"],
+body.dark-mode [style*="background: #fff"],
+body.dark-mode [style*="background: #ffffff"],
+body.dark-mode [style*="background-color: white"],
+body.dark-mode [style*="background-color: #fff"],
+body.dark-mode [style*="background-color: #ffffff"] {
+    background: #1e1e1e !important;
+}
+
+/* Light gradient backgrounds */
+body.dark-mode [style*="background: linear-gradient"][style*="#f"] {
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%) !important;
+}
