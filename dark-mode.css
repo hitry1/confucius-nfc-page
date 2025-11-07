@@ -872,3 +872,31 @@ body.dark-mode .story-section {
 body.dark-mode .timeline-section {
     background: #161616 !important;
 }
+
+/* Quote note (explanation below quotes) */
+body.dark-mode .quote-note {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+body.dark-mode .quote-note p {
+    color: #c0c0c0 !important;
+    font-style: italic;
+}
+
+/* Academic note (footnote at bottom of references) */
+body.dark-mode .academic-note {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+body.dark-mode .academic-note p {
+    color: #b8b8b8 !important;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
