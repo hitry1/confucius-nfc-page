@@ -3,7 +3,7 @@
  * Provides offline support and caching for better performance
  */
 
-const CACHE_NAME = 'wisdom-library-v28';
+const CACHE_NAME = 'wisdom-library-v29';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -19,7 +19,8 @@ const urlsToCache = [
   '/images/confucius.jpg',
   '/images/laozi.jpg',
   '/images/buddha.jpg',
-  '/videos/confucius-bg.mp4'
+  '/videos/confucius-bg.mp4',
+  '/videos/buddha-bg.mp4'
 ];
 
 // Install event - cache resources
