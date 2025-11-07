@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>동양 사상가 NFC 키링 구매 | 공자·노자·석가모니 | 동양문화사</title>
+    <title>동양 사상가 NFC 키링 구매 | 공자·노자·석가모니 | 道接 Dojeop</title>
     <meta name="description" content="스마트폰으로 터치하면 철학자의 명언과 생애를 만날 수 있는 프리미엄 NFC 키링. 공자, 노자, 석가모니 3종 세트 특별 할인 중. 무료배송·내일 도착">
     <meta name="keywords" content="NFC 키링, 공자 키링, 노자 키링, 석가모니 키링, 철학 선물, 문화상품, 동양 사상">
 
     <!-- Open Graph -->
     <meta property="og:type" content="product">
-    <meta property="og:title" content="동양 사상가 NFC 키링 | 동양문화사">
+    <meta property="og:title" content="동양 사상가 NFC 키링 | 道接 Dojeop">
     <meta property="og:description" content="스마트폰으로 철학의 세계로! 프리미엄 메탈 NFC 키링">
     <meta property="og:image" content="/og-purchase.jpg">
     <meta property="og:url" content="https://confucius-nfc.example.com/purchase.html">
@@ -80,10 +80,23 @@
         }
 
         .logo {
-            font-size: 24px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
             font-weight: 700;
             color: var(--primary-blue);
             text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            opacity: 0.8;
         }
 
         .header-actions {
@@ -990,7 +1003,8 @@
     <header class="header">
         <div class="header-container">
             <a href="index.html" class="logo">
-                <span data-ko="동양문화사" data-en="Eastern Culture">동양문화사</span>
+                <span class="logo-text" data-ko="道接" data-en="道接">道接</span>
+                <span class="logo-subtitle" data-ko="Dojeop" data-en="Dojeop">Dojeop</span>
             </a>
             <div class="header-actions">
                 <button class="lang-toggle" onclick="toggleLanguage()" aria-label="언어 변경 / Change language">
@@ -1177,7 +1191,7 @@
                     </div>
                     <div class="info-row">
                         <span class="info-label" data-ko="판매자" data-en="Seller">판매자</span>
-                        <span class="info-value" data-ko="동양문화사 공식스토어" data-en="Eastern Culture Official">동양문화사 공식스토어</span>
+                        <span class="info-value" data-ko="道接 공식스토어" data-en="Dojeop Official Store">道接 공식스토어</span>
                     </div>
                 </div>
 
@@ -1418,9 +1432,9 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p data-ko="동양문화사 | 사업자등록번호: 123-45-67890 | 대표: 홍길동"
-           data-en="Eastern Culture | Business No: 123-45-67890 | CEO: Hong Gildong">
-            동양문화사 | 사업자등록번호: 123-45-67890 | 대표: 홍길동
+        <p data-ko="道接 (Dojeop) | 사업자등록번호: 123-45-67890 | 대표: 홍길동"
+           data-en="Dojeop Inc. | Business No: 123-45-67890 | CEO: Hong Gildong">
+            道接 (Dojeop) | 사업자등록번호: 123-45-67890 | 대표: 홍길동
         </p>
         <p data-ko="서울특별시 강남구 테헤란로 123 | 고객센터: 1588-1234"
            data-en="123 Teheran-ro, Gangnam-gu, Seoul | CS: 1588-1234">
