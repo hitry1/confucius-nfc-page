@@ -120,7 +120,8 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles-combined.css">
-    
+    <link rel="stylesheet" href="dark-mode.css">
+
     <!-- Configuration -->
     <script src="config.js"></script>
 
@@ -168,6 +169,10 @@
                                                   display: flex; align-items: center; justify-content: center;">
                     0
                 </span>
+            </button>
+            <button class="dark-mode-toggle" id="darkModeToggle" onclick="toggleDarkMode()" aria-label="다크 모드 전환 / Toggle dark mode">
+                <span class="light-icon">🌙</span>
+                <span class="dark-icon hidden">☀️</span>
             </button>
             <button class="lang-toggle" id="langToggle" aria-label="언어 변경 / Change language">
                 <span class="lang-ko">EN</span>
@@ -2247,6 +2252,38 @@
             modal.style.display = 'none';
             document.body.style.overflow = '';
         }
+
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+
+            // Toggle icons
+            const lightIcon = document.querySelector('.light-icon');
+            const darkIcon = document.querySelector('.dark-icon');
+
+            if (lightIcon && darkIcon) {
+                lightIcon.classList.toggle('hidden');
+                darkIcon.classList.toggle('hidden');
+            }
+
+            // Save preference to localStorage
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Load saved dark mode preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (savedDarkMode) {
+                document.body.classList.add('dark-mode');
+                const lightIcon = document.querySelector('.light-icon');
+                const darkIcon = document.querySelector('.dark-icon');
+                if (lightIcon && darkIcon) {
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                }
+            }
+        });
 
         // ESC key to close modal
         document.addEventListener('keydown', function(e) {

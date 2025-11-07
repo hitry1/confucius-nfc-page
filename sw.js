@@ -3,12 +3,13 @@
  * Provides offline support and caching for better performance
  */
 
-const CACHE_NAME = 'wisdom-library-v26';
+const CACHE_NAME = 'wisdom-library-v27';
 const urlsToCache = [
   '/',
   '/index.html',
   '/purchase.html',
   '/styles-combined.css',
+  '/dark-mode.css',
   '/config.js',
   '/script-modern.js',
   '/purchase.js',
