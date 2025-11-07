@@ -160,24 +160,26 @@
                     <span class="tab-name" data-ko="석가모니" data-en="Buddha">석가모니</span>
                 </a>
             </div>
-            <button class="bookmark-toggle" id="bookmarkToggle" onclick="window.bookmarkManager.toggleBookmarkPanel()" 
-                    title="내 북마크" aria-label="Bookmarks">
-                <span style="font-size: 1.25rem;">📚</span>
-                <span id="bookmark-count" style="display: none; position: absolute; top: -5px; right: -5px; 
-                                                  background: #d32f2f; color: white; border-radius: 50%; 
-                                                  width: 20px; height: 20px; font-size: 0.7rem; 
-                                                  display: flex; align-items: center; justify-content: center;">
-                    0
-                </span>
-            </button>
-            <button class="dark-mode-toggle" id="darkModeToggle" onclick="toggleDarkMode()" aria-label="다크 모드 전환 / Toggle dark mode">
-                <span class="light-icon">🌙</span>
-                <span class="dark-icon hidden">☀️</span>
-            </button>
-            <button class="lang-toggle" id="langToggle" aria-label="언어 변경 / Change language">
-                <span class="lang-ko">EN</span>
-                <span class="lang-en hidden">KO</span>
-            </button>
+            <div class="nav-actions">
+                <button class="bookmark-toggle" id="bookmarkToggle" onclick="window.bookmarkManager.toggleBookmarkPanel()"
+                        title="내 북마크" aria-label="Bookmarks">
+                    <span style="font-size: 1.25rem;">📚</span>
+                    <span id="bookmark-count" style="display: none; position: absolute; top: -5px; right: -5px;
+                                                      background: #d32f2f; color: white; border-radius: 50%;
+                                                      width: 20px; height: 20px; font-size: 0.7rem;
+                                                      display: flex; align-items: center; justify-content: center;">
+                        0
+                    </span>
+                </button>
+                <button class="dark-mode-toggle" id="darkModeToggle" onclick="toggleDarkMode()" aria-label="다크 모드 전환 / Toggle dark mode">
+                    <span class="light-icon">🌙</span>
+                    <span class="dark-icon hidden">☀️</span>
+                </button>
+                <button class="lang-toggle" id="langToggle" aria-label="언어 변경 / Change language">
+                    <span class="lang-ko">EN</span>
+                    <span class="lang-en hidden">KO</span>
+                </button>
+            </div>
         </div>
     </nav>
 
