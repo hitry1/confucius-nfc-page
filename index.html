@@ -51,14 +51,14 @@
       "@type": "Product",
       "name": "동양 사상가 NFC 키링",
       "description": "공자, 노자, 석가모니 NFC 키링 세트. 스마트폰으로 태그하면 각 사상가의 명언과 철학을 만날 수 있습니다.",
-      "image": "https://confucius-nfc.example.com/product-image.jpg",
+      "image": "https://hitry1.github.io/wisdom-library/images/products/product-set-3pieces.jpg",
       "brand": {
         "@type": "Brand",
-        "name": "동양문화사"
+        "name": "DOTEOP 道接"
       },
       "offers": {
         "@type": "Offer",
-        "url": "https://confucius-nfc.example.com/purchase.html",
+        "url": "https://hitry1.github.io/wisdom-library/purchase.html",
         "priceCurrency": "KRW",
         "price": "29000",
         "priceValidUntil": "2025-12-31",
@@ -78,24 +78,19 @@
     {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
-      "name": "동양 사상가 NFC 키링",
-      "description": "동양 철학 교육 콘텐츠",
-      "url": "https://confucius-nfc.example.com",
-      "sameAs": [
-        "https://www.facebook.com/yourpage",
-        "https://www.instagram.com/youraccount",
-        "https://twitter.com/youraccount"
-      ]
+      "name": "Wisdom Library | 지혜서",
+      "description": "동양 철학 교육 콘텐츠 - 공자, 노자, 석가모니의 명언과 사상",
+      "url": "https://hitry1.github.io/wisdom-library"
     }
     </script>
-    
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://confucius-nfc.example.com">
-    
+    <link rel="canonical" href="https://hitry1.github.io/wisdom-library/">
+
     <!-- Alternate Languages -->
-    <link rel="alternate" hreflang="ko" href="https://confucius-nfc.example.com/?lang=ko">
-    <link rel="alternate" hreflang="en" href="https://confucius-nfc.example.com/?lang=en">
-    <link rel="alternate" hreflang="x-default" href="https://confucius-nfc.example.com">
+    <link rel="alternate" hreflang="ko" href="https://hitry1.github.io/wisdom-library/?lang=ko">
+    <link rel="alternate" hreflang="en" href="https://hitry1.github.io/wisdom-library/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://hitry1.github.io/wisdom-library/">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -141,22 +136,22 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
     </button>
     <!-- 인물 선택 네비게이션 바 -->
-    <nav class="character-nav">
+    <nav class="character-nav" role="navigation" aria-label="인물 선택 메뉴">
         <div class="nav-container">
             <div class="nav-left">
                 <div class="brand-logo">
                     <img src="images/doheop-logo.png" alt="道接 Dojeop" class="brand-logo-img">
                 </div>
                 <div class="nav-tabs">
-                <a href="#confucius" class="nav-tab active" data-character="confucius">
+                <a href="#confucius" class="nav-tab active" data-character="confucius" aria-label="공자 페이지로 이동" aria-current="page">
                     <span class="tab-icon">孔</span>
                     <span class="tab-name" data-ko="공자" data-en="Confucius">공자</span>
                 </a>
-                <a href="#laozi" class="nav-tab" data-character="laozi">
+                <a href="#laozi" class="nav-tab" data-character="laozi" aria-label="노자 페이지로 이동">
                     <span class="tab-icon">老</span>
                     <span class="tab-name" data-ko="노자" data-en="Laozi">노자</span>
                 </a>
-                <a href="#buddha" class="nav-tab" data-character="buddha">
+                <a href="#buddha" class="nav-tab" data-character="buddha" aria-label="석가모니 페이지로 이동">
                     <span class="tab-icon">佛</span>
                     <span class="tab-name" data-ko="석가모니" data-en="Buddha">석가모니</span>
                 </a>
@@ -193,7 +188,7 @@
         <!-- 히어로 섹션 -->
         <header class="hero-modern">
             <div class="hero-background">
-                <video autoplay loop muted playsinline class="hero-video">
+                <video autoplay loop muted playsinline class="hero-video" preload="metadata" aria-label="공자 배경 영상">
                     <source src="videos/confucius-bg.mp4" type="video/mp4">
                 </video>
                 <div class="gradient-overlay"></div>
@@ -647,7 +642,7 @@
         <!-- 히어로 섹션 -->
         <header class="hero-modern hero-laozi">
             <div class="hero-background">
-                <video autoplay loop muted playsinline class="hero-video">
+                <video autoplay loop muted playsinline class="hero-video" preload="metadata" aria-label="노자 배경 영상">
                     <source src="videos/laozi-bg.mp4" type="video/mp4">
                 </video>
                 <div class="gradient-overlay"></div>
@@ -1045,7 +1040,7 @@
         <!-- 히어로 섹션 -->
         <header class="hero-modern hero-buddha">
             <div class="hero-background">
-                <video autoplay loop muted playsinline class="hero-video">
+                <video autoplay loop muted playsinline class="hero-video" preload="metadata" aria-label="석가모니 배경 영상">
                     <source src="videos/buddha-bg.mp4" type="video/mp4">
                 </video>
                 <div class="gradient-overlay"></div>
@@ -1865,6 +1860,23 @@
 
         // 구매 버튼 클릭 추적
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile video optimization - pause videos not in view
+            if (window.innerWidth <= 768) {
+                const videos = document.querySelectorAll('.hero-video');
+                videos.forEach(video => {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                video.play().catch(e => console.log('Video play failed:', e));
+                            } else {
+                                video.pause();
+                            }
+                        });
+                    }, { threshold: 0.25 });
+                    observer.observe(video);
+                });
+            }
+
             // 구매하기 버튼
             const purchaseButtons = document.querySelectorAll('.cta-btn-primary, a[href*="purchase"]');
             purchaseButtons.forEach(function(btn) {
