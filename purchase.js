@@ -89,6 +89,18 @@ function changeImage(icon, element) {
 }
 
 /**
+ * Change thumbnail image in gallery
+ */
+function changeThumbnail(imageSrc, element) {
+    const mainImage = document.getElementById('mainProductImage');
+    if (mainImage) {
+        mainImage.src = imageSrc;
+    }
+    document.querySelectorAll('.thumbnail-img-wrapper').forEach(t => t.classList.remove('active'));
+    element.classList.add('active');
+}
+
+/**
  * Select bundle option
  */
 function selectBundle(bundle, element) {

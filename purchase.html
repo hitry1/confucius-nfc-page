@@ -212,9 +212,36 @@
             font-weight: 700;
         }
 
+        /* Main Image Container */
+        .main-image-container {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-gray);
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .main-image-container:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .main-product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
         .thumbnail-list {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
         }
 
@@ -235,6 +262,29 @@
         .thumbnail.active {
             border-color: var(--primary-blue);
             transform: scale(1.05);
+        }
+
+        .thumbnail-img-wrapper {
+            aspect-ratio: 1;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.2s;
+            background: var(--light-gray);
+        }
+
+        .thumbnail-img-wrapper:hover,
+        .thumbnail-img-wrapper.active {
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        .thumbnail-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         /* Product Info */
@@ -1041,14 +1091,35 @@
         <section class="product-section">
             <!-- Image Gallery -->
             <div class="image-gallery">
-                <div class="main-image" id="mainImage">
-                    <span id="mainIcon">孔</span>
+                <div class="main-image-container">
+                    <img id="mainProductImage" src="images/products/product-buddha-lotus.jpg" alt="道接 NFC Keyring" class="main-product-img">
                     <div class="image-badge" data-ko="한정판" data-en="LIMITED">한정판</div>
                 </div>
                 <div class="thumbnail-list">
-                    <div class="thumbnail active" onclick="changeImage('孔', this)" data-character="confucius">孔</div>
-                    <div class="thumbnail" onclick="changeImage('老', this)" data-character="laozi">老</div>
-                    <div class="thumbnail" onclick="changeImage('佛', this)" data-character="buddha">佛</div>
+                    <div class="thumbnail-img-wrapper active" onclick="changeThumbnail('images/products/product-buddha-lotus.jpg', this)">
+                        <img src="images/products/product-buddha-lotus.jpg" alt="Product 1" class="thumbnail-img">
+                    </div>
+                    <div class="thumbnail-img-wrapper" onclick="changeThumbnail('images/products/product-laozi-taiji.jpg', this)">
+                        <img src="images/products/product-laozi-taiji.jpg" alt="Product 2" class="thumbnail-img">
+                    </div>
+                    <div class="thumbnail-img-wrapper" onclick="changeThumbnail('images/products/product-confucius-book.jpg', this)">
+                        <img src="images/products/product-confucius-book.jpg" alt="Product 3" class="thumbnail-img">
+                    </div>
+                    <div class="thumbnail-img-wrapper" onclick="changeThumbnail('images/products/product-set-3pieces.jpg', this)">
+                        <img src="images/products/product-set-3pieces.jpg" alt="Product Set" class="thumbnail-img">
+                    </div>
+                    <div class="thumbnail-img-wrapper" onclick="changeThumbnail('images/products/product-set-outdoor.jpg', this)">
+                        <img src="images/products/product-set-outdoor.jpg" alt="Product Outdoor" class="thumbnail-img">
+                    </div>
+                    <div class="thumbnail-img-wrapper" onclick="changeThumbnail('images/products/product-confucius-flatlay.jpg', this)">
+                        <img src="images/products/product-confucius-flatlay.jpg" alt="Confucius Flatlay" class="thumbnail-img">
+                    </div>
+                    <div class="thumbnail-img-wrapper" onclick="changeThumbnail('images/products/product-buddha-flatlay.jpg', this)">
+                        <img src="images/products/product-buddha-flatlay.jpg" alt="Buddha Flatlay" class="thumbnail-img">
+                    </div>
+                    <div class="thumbnail-img-wrapper" onclick="changeThumbnail('images/products/product-flatlay-set.jpg', this)">
+                        <img src="images/products/product-flatlay-set.jpg" alt="Flatlay Set" class="thumbnail-img">
+                    </div>
                 </div>
             </div>
 

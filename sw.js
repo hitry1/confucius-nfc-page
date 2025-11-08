@@ -3,7 +3,7 @@
  * Provides offline support and caching for better performance
  */
 
-const CACHE_NAME = 'wisdom-library-v41';
+const CACHE_NAME = 'wisdom-library-v42';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -20,6 +20,14 @@ const urlsToCache = [
   '/images/laozi.jpg',
   '/images/buddha.jpg',
   '/images/doheop-logo.png',
+  '/images/products/product-buddha-lotus.jpg',
+  '/images/products/product-laozi-taiji.jpg',
+  '/images/products/product-confucius-book.jpg',
+  '/images/products/product-set-3pieces.jpg',
+  '/images/products/product-set-outdoor.jpg',
+  '/images/products/product-confucius-flatlay.jpg',
+  '/images/products/product-buddha-flatlay.jpg',
+  '/images/products/product-flatlay-set.jpg',
   '/videos/confucius-bg.mp4',
   '/videos/buddha-bg.mp4',
   '/videos/laozi-bg.mp4'
