@@ -1,0 +1,19 @@
+=== 이미지 저장 방법 ===
+
+제공하신 3개의 이미지를 다음과 같이 저장해주세요:
+
+1. 첫 번째 이미지 (공자 초상화) → confucius.jpg
+2. 두 번째 이미지 (이순신 초상화) → yisunsin.jpg  
+3. 세 번째 이미지 (김치 사진) → kimchi.jpg
+
+저장 위치: /Users/icheongho/confucius-nfc-page/images/
+
+=== 저장 후 확인 명령어 ===
+터미널에서 실행:
+cd /Users/icheongho/confucius-nfc-page/images
+ls -lh
+
+3개 파일이 보여야 합니다:
+- confucius.jpg
+- yisunsin.jpg
+- kimchi.jpg
