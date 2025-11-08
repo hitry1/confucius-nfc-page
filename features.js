@@ -675,7 +675,7 @@ class SearchManager {
     renderSearchUI() {
         // 검색창이 이미 있으면 리턴
         if (document.getElementById('search-container')) return;
-        
+
         const searchContainer = document.createElement('div');
         searchContainer.id = 'search-container';
         searchContainer.style.cssText = `
@@ -684,7 +684,7 @@ class SearchManager {
             right: 20px;
             z-index: 9997;
         `;
-        
+
         searchContainer.innerHTML = `
             <style>
                 @keyframes fadeInDown {
@@ -714,14 +714,68 @@ class SearchManager {
                 #search-results.show {
                     animation: fadeInDown 0.4s ease-out;
                 }
+
+                /* Mobile-optimized search */
+                @media (max-width: 768px) {
+                    #search-container {
+                        top: 70px !important;
+                        right: 10px !important;
+                        left: auto !important;
+                        width: auto !important;
+                    }
+
+                    #search-wrapper {
+                        position: relative;
+                        transition: all 0.3s ease;
+                    }
+
+                    #search-wrapper.collapsed {
+                        width: 44px;
+                        height: 44px;
+                    }
+
+                    #search-wrapper.collapsed #search-input {
+                        width: 44px !important;
+                        padding: 0 !important;
+                        opacity: 0;
+                        cursor: pointer;
+                        border-color: transparent !important;
+                        box-shadow: none !important;
+                    }
+
+                    #search-wrapper.collapsed .search-icon {
+                        cursor: pointer;
+                        background: rgba(255, 255, 255, 0.95);
+                        width: 44px;
+                        height: 44px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+                        border: 2px solid #e0e0e0;
+                    }
+
+                    #search-wrapper.expanded #search-input {
+                        width: calc(100vw - 40px) !important;
+                        max-width: 400px !important;
+                        padding: 0.75rem 2.5rem 0.75rem 1rem !important;
+                        opacity: 1;
+                    }
+
+                    #search-results {
+                        max-width: calc(100vw - 40px) !important;
+                        max-height: 60vh !important;
+                    }
+                }
             </style>
-            <div style="position: relative;">
+            <div id="search-wrapper" class="collapsed" style="position: relative;">
                 <input type="text" id="search-input" placeholder="명언 검색..."
                        style="width: 300px; padding: 0.75rem 2.5rem 0.75rem 1rem; border: 2px solid #e0e0e0;
                               border-radius: 50px; font-size: 1rem; transition: all 0.3s ease;
                               box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-                <span style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
-                            font-size: 1.25rem; color: #6a6a6a;">
+                <span class="search-icon" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+                            font-size: 1.25rem; color: #6a6a6a; pointer-events: none;">
                     🔍
                 </span>
             </div>
@@ -731,24 +785,54 @@ class SearchManager {
         `;
         
         document.body.appendChild(searchContainer);
-        
+
         // 검색 이벤트
         const searchInput = document.getElementById('search-input');
+        const searchWrapper = document.getElementById('search-wrapper');
+        const searchResults = document.getElementById('search-results');
         let searchTimeout;
-        
+
+        // Mobile: Toggle search on click
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+        if (isMobile) {
+            searchInput.addEventListener('click', () => {
+                if (searchWrapper.classList.contains('collapsed')) {
+                    searchWrapper.classList.remove('collapsed');
+                    searchWrapper.classList.add('expanded');
+                    searchInput.focus();
+                }
+            });
+
+            // Close search when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!searchContainer.contains(e.target) && searchWrapper.classList.contains('expanded')) {
+                    if (!searchInput.value) {
+                        searchWrapper.classList.remove('expanded');
+                        searchWrapper.classList.add('collapsed');
+                        searchResults.style.display = 'none';
+                    }
+                }
+            });
+        } else {
+            // Desktop: Always expanded
+            searchWrapper.classList.remove('collapsed');
+            searchWrapper.classList.add('expanded');
+        }
+
         searchInput.addEventListener('input', (e) => {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 this.performSearch(e.target.value);
             }, 300);
         });
-        
+
         // 포커스 효과
         searchInput.addEventListener('focus', () => {
             searchInput.style.borderColor = '#8B2635';
             searchInput.style.boxShadow = '0 4px 16px rgba(139, 38, 53, 0.2)';
         });
-        
+
         searchInput.addEventListener('blur', () => {
             searchInput.style.borderColor = '#e0e0e0';
             searchInput.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
