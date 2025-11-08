@@ -801,11 +801,41 @@ class SearchManager {
                         animation: fadeInDown 0.3s ease-out;
                     }
                 }
+                /* Desktop search animation */
+                @media (min-width: 769px) {
+                    #search-wrapper {
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    #search-wrapper.collapsed {
+                        width: 200px;
+                    }
+
+                    #search-wrapper.collapsed #search-input {
+                        width: 200px !important;
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    #search-wrapper.expanded {
+                        width: 400px;
+                    }
+
+                    #search-wrapper.expanded #search-input {
+                        width: 400px !important;
+                        border-color: #8B2635;
+                        box-shadow: 0 4px 16px rgba(139, 38, 53, 0.2);
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    #search-input:focus {
+                        width: 400px !important;
+                    }
+                }
             </style>
             <div id="search-wrapper" class="collapsed" style="position: relative;">
                 <input type="text" id="search-input" placeholder="명언 검색..."
-                       style="width: 300px; padding: 0.75rem 2.5rem 0.75rem 1rem; border: 2px solid #e0e0e0;
-                              border-radius: 50px; font-size: 1rem; transition: all 0.3s ease;
+                       style="width: 200px; padding: 0.75rem 2.5rem 0.75rem 1rem; border: 2px solid #e0e0e0;
+                              border-radius: 50px; font-size: 1rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                               box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                 <span class="search-icon" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
                             font-size: 1.25rem; color: #6a6a6a; pointer-events: none;">
