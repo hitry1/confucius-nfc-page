@@ -715,7 +715,7 @@ class SearchManager {
                     animation: fadeInDown 0.4s ease-out;
                 }
 
-                /* Mobile-optimized search */
+                /* Mobile-optimized search with smooth animations */
                 @media (max-width: 768px) {
                     #search-container {
                         top: 70px !important;
@@ -726,7 +726,8 @@ class SearchManager {
 
                     #search-wrapper {
                         position: relative;
-                        transition: all 0.3s ease;
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        transform-origin: right center;
                     }
 
                     #search-wrapper.collapsed {
@@ -741,11 +742,13 @@ class SearchManager {
                         cursor: pointer;
                         border-color: transparent !important;
                         box-shadow: none !important;
+                        pointer-events: all;
+                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                     }
 
                     #search-wrapper.collapsed .search-icon {
                         cursor: pointer;
-                        background: rgba(255, 255, 255, 0.95);
+                        background: rgba(255, 255, 255, 0.98);
                         width: 44px;
                         height: 44px;
                         border-radius: 50%;
@@ -754,18 +757,48 @@ class SearchManager {
                         justify-content: center;
                         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
                         border: 2px solid #e0e0e0;
+                        transition: all 0.3s ease;
+                        pointer-events: none;
+                    }
+
+                    #search-wrapper.collapsed .search-icon:active {
+                        transform: scale(0.95);
+                    }
+
+                    #search-wrapper.expanded {
+                        animation: searchExpand 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                    }
+
+                    @keyframes searchExpand {
+                        0% {
+                            width: 44px;
+                        }
+                        100% {
+                            width: calc(100vw - 40px);
+                            max-width: 400px;
+                        }
                     }
 
                     #search-wrapper.expanded #search-input {
-                        width: calc(100vw - 40px) !important;
-                        max-width: 400px !important;
+                        width: 100% !important;
                         padding: 0.75rem 2.5rem 0.75rem 1rem !important;
                         opacity: 1;
+                        transition: opacity 0.3s ease 0.2s, padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    #search-wrapper.expanded .search-icon {
+                        opacity: 1;
+                        transition: all 0.3s ease;
                     }
 
                     #search-results {
                         max-width: calc(100vw - 40px) !important;
                         max-height: 60vh !important;
+                        transition: all 0.3s ease;
+                    }
+
+                    #search-results.show {
+                        animation: fadeInDown 0.3s ease-out;
                     }
                 }
             </style>

@@ -3505,6 +3505,75 @@ html {
     video {
         will-change: auto;
     }
+
+    /* Enhanced touch feedback for interactive elements */
+    .nav-tab:active {
+        transform: scale(0.95);
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-actions button:active {
+        transform: scale(0.9);
+    }
+
+    /* Better visual feedback for buttons */
+    .cta-btn:active,
+    .btn:active {
+        transform: scale(0.96);
+    }
+
+    /* Improve gallery item interactions */
+    .gallery-item {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .gallery-item:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+    }
+
+    /* Better quote card interactions */
+    .quote-card {
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Smooth bookmark button interaction */
+    .bookmark-btn:active {
+        transform: scale(0.85);
+    }
+
+    /* Navigation bar sticky behavior */
+    .character-nav {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Prevent pull-to-refresh on some elements */
+    .character-nav,
+    .nav-tabs,
+    #search-container {
+        overscroll-behavior: contain;
+    }
+
+    /* Better focus states for accessibility */
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+        outline: 3px solid rgba(139, 38, 53, 0.5);
+        outline-offset: 2px;
+    }
+
+    /* Improve loading states visibility */
+    .loading::after {
+        border-width: 2px;
+    }
+
+    /* Make modals more mobile-friendly */
+    .modal-3d,
+    .bookmark-panel {
+        overscroll-behavior: contain;
+    }
 }
 
 /* Small mobile devices (< 480px) */
@@ -3543,5 +3612,113 @@ html {
 
     h2 {
         font-size: 1.5rem !important;
+    }
+
+    /* Extra compact spacing for very small screens */
+    .section {
+        padding: 2rem 0.75rem;
+    }
+
+    .quote-card {
+        padding: 1rem;
+    }
+}
+
+/* Additional mobile enhancements */
+@media screen and (max-width: 768px) {
+    /* Improve readability with better contrast */
+    .character-badge {
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    /* Better CTA visibility */
+    .cta-section {
+        padding: 2.5rem 1rem;
+        margin: 2rem 0;
+    }
+
+    /* Improve quote source readability */
+    .quote-source,
+    .context-source {
+        font-size: 0.85rem;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* Better visual separation for sections */
+    .section + .section {
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Improve card shadows for depth */
+    .quote-card,
+    .gallery-item,
+    .bio-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .quote-card:active,
+    .gallery-item:active {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Better link visibility */
+    a {
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+    }
+
+    /* Improve form inputs on mobile */
+    input,
+    textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+
+    /* Better modal presentation */
+    .modal-3d-content {
+        margin: 1rem;
+        max-width: calc(100vw - 2rem);
+    }
+
+    /* Improve bookmark panel on mobile */
+    #bookmark-panel {
+        width: 90vw !important;
+        right: -90vw !important;
+    }
+
+    #bookmark-panel.open {
+        right: 0 !important;
+    }
+
+    /* Better floating elements positioning */
+    .floating-purchase-btn {
+        bottom: 20px;
+        right: 15px;
+        padding: 0.9rem 1.3rem;
+        font-size: 0.95rem;
+    }
+
+    /* Improve timeline readability */
+    .timeline-item {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .timeline-year {
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* Better anecdote cards */
+    .anecdote-item {
+        padding: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .anecdote-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
     }
 }
