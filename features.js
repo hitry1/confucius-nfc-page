@@ -878,9 +878,27 @@ class SearchManager {
                 }
             });
         } else {
-            // Desktop: Always expanded
-            searchWrapper.classList.remove('collapsed');
-            searchWrapper.classList.add('expanded');
+            // Desktop: Expand on focus/click
+            searchInput.addEventListener('focus', () => {
+                searchWrapper.classList.remove('collapsed');
+                searchWrapper.classList.add('expanded');
+            });
+
+            searchInput.addEventListener('click', () => {
+                searchWrapper.classList.remove('collapsed');
+                searchWrapper.classList.add('expanded');
+            });
+
+            // Collapse when clicking outside and input is empty
+            document.addEventListener('click', (e) => {
+                if (!searchContainer.contains(e.target) && searchWrapper.classList.contains('expanded')) {
+                    if (!searchInput.value) {
+                        searchWrapper.classList.remove('expanded');
+                        searchWrapper.classList.add('collapsed');
+                        searchResults.style.display = 'none';
+                    }
+                }
+            });
         }
 
         searchInput.addEventListener('input', (e) => {
@@ -888,17 +906,6 @@ class SearchManager {
             searchTimeout = setTimeout(() => {
                 this.performSearch(e.target.value);
             }, 300);
-        });
-
-        // 포커스 효과
-        searchInput.addEventListener('focus', () => {
-            searchInput.style.borderColor = '#8B2635';
-            searchInput.style.boxShadow = '0 4px 16px rgba(139, 38, 53, 0.2)';
-        });
-
-        searchInput.addEventListener('blur', () => {
-            searchInput.style.borderColor = '#e0e0e0';
-            searchInput.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
         });
     }
 
