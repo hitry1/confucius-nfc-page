@@ -19,6 +19,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon-32x32.png">
 
+    <!-- Three.js for 3D Viewer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -1033,6 +1036,75 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* 3D Viewer Styles */
+        #viewer-3d {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            display: none;
+        }
+
+        #viewer-3d.active {
+            display: block;
+        }
+
+        .view-mode-toggle {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            background: white;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .view-mode-btn {
+            flex: 1;
+            padding: 10px 16px;
+            background: white;
+            border: 2px solid var(--border-gray);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .view-mode-btn:hover {
+            border-color: var(--primary-blue);
+            background: #e7f5ff;
+        }
+
+        .view-mode-btn.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .viewer-3d-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .viewer-3d-hint.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -1091,9 +1163,29 @@
         <section class="product-section">
             <!-- Image Gallery -->
             <div class="image-gallery">
-                <div class="main-image-container">
+                <!-- View Mode Toggle -->
+                <div class="view-mode-toggle">
+                    <button class="view-mode-btn active" onclick="switchViewMode('photos')" id="photosBtn">
+                        <span>📸</span>
+                        <span data-ko="사진" data-en="Photos">사진</span>
+                    </button>
+                    <button class="view-mode-btn" onclick="switchViewMode('3d')" id="viewer3dBtn">
+                        <span>🎯</span>
+                        <span data-ko="3D 보기" data-en="3D View">3D 보기</span>
+                    </button>
+                </div>
+
+                <div class="main-image-container" id="mainImageContainer">
                     <img id="mainProductImage" src="images/products/product-buddha-lotus.jpg" alt="道接 NFC Keyring" class="main-product-img">
                     <div class="image-badge" data-ko="한정판" data-en="LIMITED">한정판</div>
+                    <!-- 3D Viewer Container -->
+                    <div id="viewer-3d"></div>
+                    <div class="viewer-3d-hint" id="viewer3dHint">
+                        <span data-ko="🖱️ 드래그: 회전 | 스크롤: 확대/축소"
+                              data-en="🖱️ Drag: Rotate | Scroll: Zoom">
+                            🖱️ 드래그: 회전 | 스크롤: 확대/축소
+                        </span>
+                    </div>
                 </div>
                 <div class="thumbnail-list">
                     <div class="thumbnail-img-wrapper active" onclick="changeThumbnail('images/products/product-buddha-lotus.jpg', this)">
@@ -1543,5 +1635,49 @@
 
     <script src="config.js"></script>
     <script src="purchase.js"></script>
+    <script src="3d-viewer.js"></script>
+
+    <script>
+        // View mode switcher
+        function switchViewMode(mode) {
+            const photosBtn = document.getElementById('photosBtn');
+            const viewer3dBtn = document.getElementById('viewer3dBtn');
+            const mainImage = document.getElementById('mainProductImage');
+            const viewer3d = document.getElementById('viewer-3d');
+            const hint = document.getElementById('viewer3dHint');
+            const thumbnailList = document.querySelector('.thumbnail-list');
+            const imageBadge = document.querySelector('.image-badge');
+
+            if (mode === '3d') {
+                // Switch to 3D view
+                photosBtn.classList.remove('active');
+                viewer3dBtn.classList.add('active');
+                mainImage.style.display = 'none';
+                viewer3d.classList.add('active');
+                thumbnailList.style.display = 'none';
+                if (imageBadge) imageBadge.style.display = 'none';
+
+                // Show hint for 2 seconds
+                hint.classList.add('show');
+                setTimeout(() => {
+                    hint.classList.remove('show');
+                }, 3000);
+
+                // Initialize 3D viewer if not already done
+                if (!window.keyringViewer && typeof THREE !== 'undefined') {
+                    window.keyringViewer = new KeyringViewer3D('viewer-3d');
+                }
+            } else {
+                // Switch to photos view
+                viewer3dBtn.classList.remove('active');
+                photosBtn.classList.add('active');
+                viewer3d.classList.remove('active');
+                mainImage.style.display = 'block';
+                thumbnailList.style.display = 'grid';
+                if (imageBadge) imageBadge.style.display = 'block';
+                hint.classList.remove('show');
+            }
+        }
+    </script>
 </body>
 </html>

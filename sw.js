@@ -3,7 +3,7 @@
  * Provides offline support and caching for better performance
  */
 
-const CACHE_NAME = 'wisdom-library-v54';
+const CACHE_NAME = 'wisdom-library-v55';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -15,6 +15,7 @@ const urlsToCache = [
   '/purchase.js',
   '/features.js',
   '/lazy-loading.js',
+  '/3d-viewer.js',
   '/manifest.json',
   '/images/confucius.jpg',
   '/images/laozi.jpg',
