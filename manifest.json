@@ -3,7 +3,7 @@
   "short_name": "지혜서",
   "description": "동양 철학의 정수 - 공자, 노자, 석가모니의 명언과 사상",
   "start_url": "/",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#ffffff",
   "theme_color": "#8B4513",
   "orientation": "portrait-primary",
