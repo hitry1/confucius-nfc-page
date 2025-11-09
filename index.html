@@ -280,16 +280,16 @@
                             </div>
                         </div>
 
-                        <div class="gallery-item gallery-item-3d" data-item="statue" onclick="open3DModal()" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div class="gallery-item gallery-item-3d" data-item="statue" onclick="open3DModal()" ontouchstart="open3DModal()" style="cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; -webkit-tap-highlight-color: rgba(139, 38, 53, 0.3); touch-action: manipulation;">
                             <div class="gallery-item-image">
                                 <div class="gallery-item-icon" style="font-size: 3rem;">🗿</div>
                                 <span class="gallery-badge" data-ko="3D 모델" data-en="3D Model" style="background: linear-gradient(135deg, #8B2635, #d4424f);">3D 모델</span>
                             </div>
                             <div class="gallery-item-info">
                                 <h3 class="gallery-item-title" data-ko="공자상 (孔子像)" data-en="Confucius Statue">공자상 (孔子像)</h3>
-                                <p class="gallery-item-desc" data-ko="클릭하여 3D 모델 보기" data-en="Click to view 3D model">클릭하여 3D 모델 보기</p>
+                                <p class="gallery-item-desc" data-ko="터치하여 3D 모델 보기" data-en="Tap to view 3D model">터치하여 3D 모델 보기</p>
                                 <p style="font-size: 0.9rem; color: #8B2635; margin-top: 0.5rem; font-weight: 500;">
-                                    <span data-ko="👆 클릭하세요" data-en="👆 Click here">👆 클릭하세요</span>
+                                    <span data-ko="👆 터치하세요" data-en="👆 Tap here">👆 터치하세요</span>
                                 </p>
                             </div>
                         </div>
@@ -2281,16 +2281,26 @@
     </style>
 
     <script>
+        // Global functions must be defined outside DOMContentLoaded
         function open3DModal() {
+            console.log('open3DModal called');
             const modal = document.getElementById('model3DModal');
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                console.log('Modal opened');
+            } else {
+                console.error('Modal not found');
+            }
         }
 
         function close3DModal() {
+            console.log('close3DModal called');
             const modal = document.getElementById('model3DModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
         }
 
         // Dark Mode Toggle Function
@@ -2311,8 +2321,11 @@
             localStorage.setItem('darkMode', isDark);
         }
 
-        // Load saved dark mode preference on page load
+        // Single DOMContentLoaded for all initialization
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded - Initializing...');
+
+            // Dark mode
             const savedDarkMode = localStorage.getItem('darkMode') === 'true';
             if (savedDarkMode) {
                 document.body.classList.add('dark-mode');
@@ -2323,197 +2336,155 @@
                     darkIcon.classList.remove('hidden');
                 }
             }
+
+            // Create fullscreen button
+            const fullscreenBtn = document.createElement('button');
+            fullscreenBtn.innerHTML = '⛶';
+            fullscreenBtn.id = 'fullscreenButton';
+            fullscreenBtn.style.cssText = `
+                position: fixed !important;
+                bottom: 90px !important;
+                right: 20px !important;
+                width: 50px !important;
+                height: 50px !important;
+                border-radius: 50% !important;
+                background: rgba(139, 38, 53, 0.9) !important;
+                color: white !important;
+                border: none !important;
+                font-size: 24px !important;
+                cursor: pointer !important;
+                z-index: 9999 !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                transition: opacity 0.3s ease !important;
+                display: block !important;
+            `;
+            fullscreenBtn.title = '전체화면';
+            fullscreenBtn.setAttribute('aria-label', '전체화면 모드');
+
+            // Fullscreen functions
+            function enterFullscreen() {
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen().catch(err => {
+                        console.log('Fullscreen request failed:', err);
+                    });
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function exitFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            fullscreenBtn.onclick = function() {
+                if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                    enterFullscreen();
+                } else {
+                    exitFullscreen();
+                }
+            };
+            document.body.appendChild(fullscreenBtn);
+            console.log('✅ Fullscreen button created and added to body');
+
+            // Setup 3D gallery touch/click for mobile
+            const gallery3DItem = document.querySelector('.gallery-item-3d');
+            if (gallery3DItem) {
+                // Remove inline handlers to prevent conflicts
+                gallery3DItem.removeAttribute('onclick');
+                gallery3DItem.removeAttribute('ontouchstart');
+
+                // Add both touch and click events
+                gallery3DItem.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🔥 Touch event triggered on 3D gallery');
+                    open3DModal();
+                }, { passive: false });
+
+                gallery3DItem.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🔥 Click event triggered on 3D gallery');
+                    open3DModal();
+                });
+
+                console.log('✅ 3D gallery touch/click events attached');
+            } else {
+                console.error('❌ 3D gallery item not found');
+            }
+
+            // Auto-hide buttons on scroll
+            let scrollTimeout;
+            const backToTopBtn = document.getElementById('backToTop');
+
+            function hideButtons() {
+                if (fullscreenBtn) {
+                    fullscreenBtn.style.opacity = '0';
+                    fullscreenBtn.style.pointerEvents = 'none';
+                }
+                if (backToTopBtn) {
+                    backToTopBtn.style.opacity = '0';
+                    backToTopBtn.style.pointerEvents = 'none';
+                }
+            }
+
+            function showButtons() {
+                if (fullscreenBtn) {
+                    fullscreenBtn.style.opacity = '1';
+                    fullscreenBtn.style.pointerEvents = 'auto';
+                }
+                if (backToTopBtn && window.scrollY > 300) {
+                    backToTopBtn.style.opacity = '1';
+                    backToTopBtn.style.pointerEvents = 'auto';
+                }
+            }
+
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                hideButtons();
+                scrollTimeout = setTimeout(() => {
+                    showButtons();
+                }, 1000);
+            });
+
+            // Show buttons on mouse move (desktop) or touch (mobile)
+            let mouseMoveTimeout;
+            document.addEventListener('mousemove', function(e) {
+                if (e.target.closest('.gallery-item-3d') || e.target.closest('.modal-3d')) {
+                    return;
+                }
+                clearTimeout(mouseMoveTimeout);
+                showButtons();
+            });
+
+            // Don't interfere with 3D gallery touch events
+            document.addEventListener('touchstart', function(e) {
+                if (e.target.closest('.gallery-item-3d') || e.target.closest('.modal-3d')) {
+                    return;
+                }
+                showButtons();
+            }, { passive: true });
         });
 
         // ESC key to close modal
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 close3DModal();
-            }
-        });
-
-        // Create fullscreen button with adjusted position
-        const fullscreenBtn = document.createElement('button');
-        fullscreenBtn.innerHTML = '⛶';
-        fullscreenBtn.id = 'fullscreenButton';
-        fullscreenBtn.style.cssText = `
-            position: fixed !important;
-            bottom: 90px !important;
-            right: 20px !important;
-            width: 50px !important;
-            height: 50px !important;
-            border-radius: 50% !important;
-            background: rgba(139, 38, 53, 0.9) !important;
-            color: white !important;
-            border: none !important;
-            font-size: 24px !important;
-            cursor: pointer !important;
-            z-index: 9999 !important;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
-            transition: opacity 0.3s ease !important;
-            display: block !important;
-        `;
-        fullscreenBtn.title = '전체화면';
-        fullscreenBtn.setAttribute('aria-label', '전체화면 모드');
-        document.body.appendChild(fullscreenBtn);
-
-        console.log('Fullscreen button created:', fullscreenBtn);
-
-        // Fullscreen function
-        function enterFullscreen() {
-            const elem = document.documentElement;
-
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen().catch(err => {
-                    console.log('Fullscreen request failed:', err);
-                });
-            } else if (elem.webkitRequestFullscreen) { // Safari
-                elem.webkitRequestFullscreen();
-            } else if (elem.mozRequestFullScreen) { // Firefox
-                elem.mozRequestFullScreen();
-            } else if (elem.msRequestFullscreen) { // IE11
-                elem.msRequestFullscreen();
-            }
-        }
-
-        // Exit fullscreen function
-        function exitFullscreen() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-
-        // Toggle fullscreen on button click
-        fullscreenBtn.addEventListener('click', function() {
-            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                enterFullscreen();
-            } else {
-                exitFullscreen();
-            }
-        });
-
-        // Update button icon based on fullscreen state
-        document.addEventListener('fullscreenchange', updateFullscreenButton);
-        document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
-
-        function updateFullscreenButton() {
-            if (document.fullscreenElement || document.webkitFullscreenElement) {
-                fullscreenBtn.innerHTML = '⛶';
-                fullscreenBtn.title = '전체화면 종료';
-            } else {
-                fullscreenBtn.innerHTML = '⛶';
-                fullscreenBtn.title = '전체화면';
-            }
-        }
-
-        // Toggle fullscreen with F11 key (desktop)
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F11') {
-                e.preventDefault();
-                if (!document.fullscreenElement) {
-                    enterFullscreen();
-                } else {
-                    exitFullscreen();
-                }
-            }
-        });
-
-        // Auto-hide buttons on scroll
-        let scrollTimeout;
-        let lastScrollY = window.scrollY;
-        const backToTopBtn = document.getElementById('backToTop');
-
-        function hideButtons() {
-            if (fullscreenBtn) {
-                fullscreenBtn.style.opacity = '0';
-                fullscreenBtn.style.pointerEvents = 'none';
-            }
-            if (backToTopBtn) {
-                backToTopBtn.style.opacity = '0';
-                backToTopBtn.style.pointerEvents = 'none';
-            }
-        }
-
-        function showButtons() {
-            if (fullscreenBtn) {
-                fullscreenBtn.style.opacity = '1';
-                fullscreenBtn.style.pointerEvents = 'auto';
-            }
-            if (backToTopBtn && window.scrollY > 300) {
-                backToTopBtn.style.opacity = '1';
-                backToTopBtn.style.pointerEvents = 'auto';
-            }
-        }
-
-        window.addEventListener('scroll', function() {
-            // Clear previous timeout
-            clearTimeout(scrollTimeout);
-
-            // Hide buttons immediately when scrolling
-            hideButtons();
-
-            // Show buttons after scroll stops for 1 second
-            scrollTimeout = setTimeout(() => {
-                showButtons();
-            }, 1000);
-
-            lastScrollY = window.scrollY;
-        });
-
-        // Show buttons on mouse move (desktop) or touch (mobile)
-        let mouseMoveTimeout;
-        document.addEventListener('mousemove', function(e) {
-            // Don't show buttons if clicking on gallery items
-            if (e.target.closest('.gallery-item-3d') || e.target.closest('.modal-3d')) {
-                return;
-            }
-
-            clearTimeout(mouseMoveTimeout);
-            showButtons();
-
-            mouseMoveTimeout = setTimeout(() => {
-                if (window.scrollY > 0) {
-                    // Don't auto-hide if user is actively moving mouse
-                }
-            }, 3000);
-        });
-
-        document.addEventListener('touchstart', function(e) {
-            // Don't show buttons if touching gallery items
-            if (e.target.closest('.gallery-item-3d') || e.target.closest('.modal-3d')) {
-                return;
-            }
-            showButtons();
-        });
-
-        // Ensure 3D modal click works - attach event directly
-        document.addEventListener('DOMContentLoaded', function() {
-            const gallery3DItem = document.querySelector('.gallery-item-3d');
-            if (gallery3DItem) {
-                // Remove inline onclick if exists
-                gallery3DItem.removeAttribute('onclick');
-
-                // Add click event listener with high priority
-                gallery3DItem.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('3D gallery item clicked');
-                    open3DModal();
-                }, true); // Use capture phase
-
-                // Ensure the element is clickable
-                gallery3DItem.style.pointerEvents = 'auto';
-                gallery3DItem.style.cursor = 'pointer';
-                gallery3DItem.style.position = 'relative';
-                gallery3DItem.style.zIndex = '1';
             }
         });
     </script>
