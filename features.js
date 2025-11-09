@@ -803,21 +803,44 @@ class SearchManager {
                 }
                 /* Desktop search animation */
                 @media (min-width: 769px) {
+                    @keyframes searchExpandDesktop {
+                        0% {
+                            width: 200px;
+                        }
+                        100% {
+                            width: 400px;
+                        }
+                    }
+
+                    @keyframes searchCollapseDesktop {
+                        0% {
+                            width: 400px;
+                        }
+                        100% {
+                            width: 200px;
+                        }
+                    }
+
                     #search-wrapper {
-                        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        position: relative;
+                        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                     }
 
                     #search-wrapper.collapsed {
                         width: 200px;
+                        animation: searchCollapseDesktop 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
                     }
 
                     #search-wrapper.collapsed #search-input {
                         width: 200px !important;
                         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                        border-color: #e0e0e0;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                     }
 
                     #search-wrapper.expanded {
                         width: 400px;
+                        animation: searchExpandDesktop 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
                     }
 
                     #search-wrapper.expanded #search-input {
@@ -829,6 +852,17 @@ class SearchManager {
 
                     #search-input:focus {
                         width: 400px !important;
+                        border-color: #8B2635;
+                        box-shadow: 0 4px 16px rgba(139, 38, 53, 0.2);
+                    }
+
+                    /* Smooth icon transition */
+                    .search-icon {
+                        transition: all 0.3s ease;
+                    }
+
+                    #search-wrapper.expanded .search-icon {
+                        opacity: 0.7;
                     }
                 }
             </style>
