@@ -2349,8 +2349,9 @@
             cursor: pointer;
             z-index: 9999;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            display: none;
-            transition: all 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         `;
         fullscreenBtn.title = '전체화면';
         fullscreenBtn.setAttribute('aria-label', '전체화면 모드');
@@ -2358,10 +2359,9 @@
 
         // Show button after page loads
         setTimeout(() => {
-            fullscreenBtn.style.display = 'block';
             fullscreenBtn.style.opacity = '1';
             fullscreenBtn.style.pointerEvents = 'auto';
-        }, 2000);
+        }, 1000);
 
         // Fullscreen function
         function enterFullscreen() {
