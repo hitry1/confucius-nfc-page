@@ -3,7 +3,7 @@
 <head>
     <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui, viewport-fit=cover">
     <meta name="description" content="지혜에 접속하다 - CONNECT WITH WISDOM. NFC 태그로 만나는 동양 철학. 당신의 하루에 지혜를 태그하세요. 공자, 노자, 석가모니의 명언과 사상을 담은 감성 철학 굿즈.">
     <meta name="keywords" content="공자, 노자, 석가모니, NFC 키링, 동양 철학, 논어, 도덕경, 법구경, 명언, 동양 사상가, 유교, 도가, 불교">
     <meta name="author" content="동양문화사">
@@ -2317,18 +2317,48 @@
             }
         });
 
-        // Auto fullscreen on page load (for NFC tag experience)
+        // Hide address bar on mobile by scrolling
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if opened from NFC or direct link (not from user browsing)
-            const isFromNFC = document.referrer === '' || window.history.length <= 2;
+            // Minimal scroll to hide address bar on mobile browsers
+            setTimeout(() => {
+                window.scrollTo(0, 1);
+            }, 100);
 
-            if (isFromNFC) {
-                // Request fullscreen after a short delay to ensure page is loaded
+            // Re-hide on orientation change
+            window.addEventListener('orientationchange', function() {
                 setTimeout(() => {
-                    enterFullscreen();
-                }, 500);
-            }
+                    window.scrollTo(0, 1);
+                }, 100);
+            });
         });
+
+        // Show fullscreen button for user-triggered fullscreen
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.innerHTML = '⛶';
+        fullscreenBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(139, 38, 53, 0.9);
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none;
+            transition: all 0.3s;
+        `;
+        fullscreenBtn.title = '전체화면';
+        document.body.appendChild(fullscreenBtn);
+
+        // Show button after page loads
+        setTimeout(() => {
+            fullscreenBtn.style.display = 'block';
+        }, 2000);
 
         // Fullscreen function
         function enterFullscreen() {
@@ -2360,7 +2390,30 @@
             }
         }
 
-        // Toggle fullscreen with F11 key
+        // Toggle fullscreen on button click
+        fullscreenBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                enterFullscreen();
+            } else {
+                exitFullscreen();
+            }
+        });
+
+        // Update button icon based on fullscreen state
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+
+        function updateFullscreenButton() {
+            if (document.fullscreenElement || document.webkitFullscreenElement) {
+                fullscreenBtn.innerHTML = '⛶';
+                fullscreenBtn.title = '전체화면 종료';
+            } else {
+                fullscreenBtn.innerHTML = '⛶';
+                fullscreenBtn.title = '전체화면';
+            }
+        }
+
+        // Toggle fullscreen with F11 key (desktop)
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F11') {
                 e.preventDefault();
