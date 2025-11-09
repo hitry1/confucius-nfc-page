@@ -2472,7 +2472,12 @@
 
         // Show buttons on mouse move (desktop) or touch (mobile)
         let mouseMoveTimeout;
-        document.addEventListener('mousemove', function() {
+        document.addEventListener('mousemove', function(e) {
+            // Don't show buttons if clicking on gallery items
+            if (e.target.closest('.gallery-item-3d') || e.target.closest('.modal-3d')) {
+                return;
+            }
+
             clearTimeout(mouseMoveTimeout);
             showButtons();
 
@@ -2483,8 +2488,20 @@
             }, 3000);
         });
 
-        document.addEventListener('touchstart', function() {
+        document.addEventListener('touchstart', function(e) {
+            // Don't show buttons if touching gallery items
+            if (e.target.closest('.gallery-item-3d') || e.target.closest('.modal-3d')) {
+                return;
+            }
             showButtons();
+        });
+
+        // Ensure 3D modal click works
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.gallery-item-3d')) {
+                // Force show buttons when interacting with 3D elements
+                showButtons();
+            }
         });
     </script>
 
