@@ -2496,11 +2496,26 @@
             showButtons();
         });
 
-        // Ensure 3D modal click works
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.gallery-item-3d')) {
-                // Force show buttons when interacting with 3D elements
-                showButtons();
+        // Ensure 3D modal click works - attach event directly
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery3DItem = document.querySelector('.gallery-item-3d');
+            if (gallery3DItem) {
+                // Remove inline onclick if exists
+                gallery3DItem.removeAttribute('onclick');
+
+                // Add click event listener with high priority
+                gallery3DItem.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('3D gallery item clicked');
+                    open3DModal();
+                }, true); // Use capture phase
+
+                // Ensure the element is clickable
+                gallery3DItem.style.pointerEvents = 'auto';
+                gallery3DItem.style.cursor = 'pointer';
+                gallery3DItem.style.position = 'relative';
+                gallery3DItem.style.zIndex = '1';
             }
         });
     </script>
