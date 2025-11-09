@@ -2316,6 +2316,61 @@
                 close3DModal();
             }
         });
+
+        // Auto fullscreen on page load (for NFC tag experience)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if opened from NFC or direct link (not from user browsing)
+            const isFromNFC = document.referrer === '' || window.history.length <= 2;
+
+            if (isFromNFC) {
+                // Request fullscreen after a short delay to ensure page is loaded
+                setTimeout(() => {
+                    enterFullscreen();
+                }, 500);
+            }
+        });
+
+        // Fullscreen function
+        function enterFullscreen() {
+            const elem = document.documentElement;
+
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => {
+                    console.log('Fullscreen request failed:', err);
+                });
+            } else if (elem.webkitRequestFullscreen) { // Safari
+                elem.webkitRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.msRequestFullscreen) { // IE11
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Exit fullscreen function
+        function exitFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+
+        // Toggle fullscreen with F11 key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F11') {
+                e.preventDefault();
+                if (!document.fullscreenElement) {
+                    enterFullscreen();
+                } else {
+                    exitFullscreen();
+                }
+            }
+        });
     </script>
 
 </body>
