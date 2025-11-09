@@ -2425,6 +2425,65 @@
                 }
             }
         });
+
+        // Auto-hide buttons on scroll
+        let scrollTimeout;
+        let lastScrollY = window.scrollY;
+        const backToTopBtn = document.getElementById('backToTop');
+
+        function hideButtons() {
+            if (fullscreenBtn) {
+                fullscreenBtn.style.opacity = '0';
+                fullscreenBtn.style.pointerEvents = 'none';
+            }
+            if (backToTopBtn) {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.pointerEvents = 'none';
+            }
+        }
+
+        function showButtons() {
+            if (fullscreenBtn) {
+                fullscreenBtn.style.opacity = '1';
+                fullscreenBtn.style.pointerEvents = 'auto';
+            }
+            if (backToTopBtn && window.scrollY > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.pointerEvents = 'auto';
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            // Clear previous timeout
+            clearTimeout(scrollTimeout);
+
+            // Hide buttons immediately when scrolling
+            hideButtons();
+
+            // Show buttons after scroll stops for 1 second
+            scrollTimeout = setTimeout(() => {
+                showButtons();
+            }, 1000);
+
+            lastScrollY = window.scrollY;
+        });
+
+        // Show buttons on mouse move (desktop) or touch (mobile)
+        let mouseMoveTimeout;
+        document.addEventListener('mousemove', function() {
+            clearTimeout(mouseMoveTimeout);
+            showButtons();
+
+            mouseMoveTimeout = setTimeout(() => {
+                if (window.scrollY > 0) {
+                    // Don't auto-hide if user is actively moving mouse
+                }
+            }, 3000);
+        });
+
+        document.addEventListener('touchstart', function() {
+            showButtons();
+        });
     </script>
 
 </body>
