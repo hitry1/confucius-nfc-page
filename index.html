@@ -2344,41 +2344,98 @@
             }
         });
 
-        // Progressive Web App - Request to add to home screen
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent the mini-infobar from appearing on mobile
-            e.preventDefault();
-            // Stash the event so it can be triggered later
-            deferredPrompt = e;
+        // Create fullscreen button with adjusted position
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.innerHTML = '⛶';
+        fullscreenBtn.style.cssText = `
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(139, 38, 53, 0.9);
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none;
+            transition: all 0.3s;
+        `;
+        fullscreenBtn.title = '전체화면';
+        fullscreenBtn.setAttribute('aria-label', '전체화면 모드');
+        document.body.appendChild(fullscreenBtn);
 
-            // Show install prompt after 3 seconds if from NFC
-            const isFromNFC = document.referrer === '' || window.history.length <= 2;
-            if (isFromNFC) {
-                setTimeout(() => {
-                    showInstallPromotion();
-                }, 3000);
-            }
-        });
+        // Show button after page loads
+        setTimeout(() => {
+            fullscreenBtn.style.display = 'block';
+        }, 2000);
 
-        function showInstallPromotion() {
-            if (deferredPrompt) {
-                // Show native install prompt
-                deferredPrompt.prompt();
+        // Fullscreen function
+        function enterFullscreen() {
+            const elem = document.documentElement;
 
-                // Wait for the user to respond to the prompt
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    }
-                    deferredPrompt = null;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => {
+                    console.log('Fullscreen request failed:', err);
                 });
+            } else if (elem.webkitRequestFullscreen) { // Safari
+                elem.webkitRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.msRequestFullscreen) { // IE11
+                elem.msRequestFullscreen();
             }
         }
 
-        // When app is added to home screen
-        window.addEventListener('appinstalled', () => {
-            console.log('PWA was installed');
+        // Exit fullscreen function
+        function exitFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+
+        // Toggle fullscreen on button click
+        fullscreenBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                enterFullscreen();
+            } else {
+                exitFullscreen();
+            }
+        });
+
+        // Update button icon based on fullscreen state
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+
+        function updateFullscreenButton() {
+            if (document.fullscreenElement || document.webkitFullscreenElement) {
+                fullscreenBtn.innerHTML = '⛶';
+                fullscreenBtn.title = '전체화면 종료';
+            } else {
+                fullscreenBtn.innerHTML = '⛶';
+                fullscreenBtn.title = '전체화면';
+            }
+        }
+
+        // Toggle fullscreen with F11 key (desktop)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F11') {
+                e.preventDefault();
+                if (!document.fullscreenElement) {
+                    enterFullscreen();
+                } else {
+                    exitFullscreen();
+                }
+            }
         });
     </script>
 
