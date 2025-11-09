@@ -117,6 +117,33 @@
     <link rel="stylesheet" href="styles-combined.css">
     <link rel="stylesheet" href="dark-mode.css">
 
+    <!-- Fullscreen CSS for mobile browsers -->
+    <style>
+        /* Hide address bar on mobile using CSS */
+        html {
+            height: 100%;
+            overflow: auto;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            position: relative;
+        }
+
+        /* iOS Safari specific - hide address bar */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                min-height: -webkit-fill-available;
+            }
+        }
+
+        /* Prevent bounce scroll on iOS */
+        body {
+            overscroll-behavior-y: contain;
+        }
+    </style>
+
     <!-- Configuration -->
     <script src="config.js"></script>
 
@@ -2317,34 +2344,41 @@
             }
         });
 
-        // Hide address bar on mobile by scrolling
-        document.addEventListener('DOMContentLoaded', function() {
-            // Minimal scroll to hide address bar on mobile browsers
-            setTimeout(() => {
-                window.scrollTo(0, 1);
-            }, 100);
+        // Progressive Web App - Request to add to home screen
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
 
-            // Re-hide on orientation change
-            window.addEventListener('orientationchange', function() {
+            // Show install prompt after 3 seconds if from NFC
+            const isFromNFC = document.referrer === '' || window.history.length <= 2;
+            if (isFromNFC) {
                 setTimeout(() => {
-                    window.scrollTo(0, 1);
-                }, 100);
-            });
+                    showInstallPromotion();
+                }, 3000);
+            }
+        });
 
-            // Keep address bar hidden on scroll
-            let lastScrollY = window.scrollY;
-            window.addEventListener('scroll', function() {
-                // Hide address bar when scrolling down
-                if (window.scrollY > lastScrollY && window.scrollY > 0) {
-                    // Scrolling down - keep at current position to hide address bar
-                } else if (window.scrollY === 0) {
-                    // At top - slight scroll to hide address bar
-                    setTimeout(() => {
-                        window.scrollTo(0, 1);
-                    }, 50);
-                }
-                lastScrollY = window.scrollY;
-            });
+        function showInstallPromotion() {
+            if (deferredPrompt) {
+                // Show native install prompt
+                deferredPrompt.prompt();
+
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
+        // When app is added to home screen
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
         });
     </script>
 
