@@ -229,6 +229,7 @@
             border: 1px solid var(--border-gray);
             cursor: zoom-in;
             position: relative;
+            min-height: 400px;
         }
 
         .main-image-container:hover {
@@ -236,10 +237,19 @@
         }
 
         .main-product-img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .main-product-img.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .thumbnail-list {
@@ -1039,14 +1049,24 @@
 
         /* 3D Viewer Styles */
         #viewer-3d {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border-radius: 8px;
-            display: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
         #viewer-3d.active {
-            display: block;
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        #viewer-3d canvas {
+            border-radius: 8px;
         }
 
         .view-mode-toggle {
@@ -1648,33 +1668,43 @@
             const thumbnailList = document.querySelector('.thumbnail-list');
             const imageBadge = document.querySelector('.image-badge');
 
+            console.log('Switching to mode:', mode);
+
             if (mode === '3d') {
                 // Switch to 3D view
                 photosBtn.classList.remove('active');
                 viewer3dBtn.classList.add('active');
-                mainImage.style.display = 'none';
+                mainImage.classList.add('hidden');
                 viewer3d.classList.add('active');
                 thumbnailList.style.display = 'none';
-                if (imageBadge) imageBadge.style.display = 'none';
+                if (imageBadge) imageBadge.style.opacity = '0';
 
-                // Show hint for 2 seconds
+                // Show hint for 3 seconds
                 hint.classList.add('show');
                 setTimeout(() => {
                     hint.classList.remove('show');
                 }, 3000);
 
                 // Initialize 3D viewer if not already done
-                if (!window.keyringViewer && typeof THREE !== 'undefined') {
-                    window.keyringViewer = new KeyringViewer3D('viewer-3d');
+                if (!window.keyringViewer) {
+                    if (typeof THREE === 'undefined') {
+                        console.error('Three.js not loaded!');
+                        alert('3D 뷰어를 로드할 수 없습니다. 페이지를 새로고침해주세요.');
+                        return;
+                    }
+                    console.log('Initializing 3D viewer...');
+                    setTimeout(() => {
+                        window.keyringViewer = new KeyringViewer3D('viewer-3d');
+                    }, 100);
                 }
             } else {
                 // Switch to photos view
                 viewer3dBtn.classList.remove('active');
                 photosBtn.classList.add('active');
                 viewer3d.classList.remove('active');
-                mainImage.style.display = 'block';
+                mainImage.classList.remove('hidden');
                 thumbnailList.style.display = 'grid';
-                if (imageBadge) imageBadge.style.display = 'block';
+                if (imageBadge) imageBadge.style.opacity = '1';
                 hint.classList.remove('show');
             }
         }

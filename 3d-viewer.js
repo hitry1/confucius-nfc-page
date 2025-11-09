@@ -29,8 +29,11 @@ class KeyringViewer3D {
         this.scene.background = new THREE.Color(0xf7f7f7);
 
         // Camera setup
-        const width = this.container.clientWidth;
-        const height = this.container.clientHeight;
+        const width = this.container.clientWidth || this.container.parentElement.clientWidth || 600;
+        const height = this.container.clientHeight || this.container.parentElement.clientHeight || 600;
+
+        console.log('3D Viewer dimensions:', width, 'x', height);
+
         this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
         this.camera.position.set(0, 0, 5);
 
