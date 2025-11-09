@@ -2335,33 +2335,31 @@
         // Create fullscreen button with adjusted position
         const fullscreenBtn = document.createElement('button');
         fullscreenBtn.innerHTML = '⛶';
+        fullscreenBtn.id = 'fullscreenButton';
         fullscreenBtn.style.cssText = `
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(139, 38, 53, 0.9);
-            color: white;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 9999;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            position: fixed !important;
+            bottom: 90px !important;
+            right: 20px !important;
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 50% !important;
+            background: rgba(139, 38, 53, 0.9) !important;
+            color: white !important;
+            border: none !important;
+            font-size: 24px !important;
+            cursor: pointer !important;
+            z-index: 9999 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transition: opacity 0.3s ease !important;
+            display: block !important;
         `;
         fullscreenBtn.title = '전체화면';
         fullscreenBtn.setAttribute('aria-label', '전체화면 모드');
         document.body.appendChild(fullscreenBtn);
 
-        // Show button after page loads
-        setTimeout(() => {
-            fullscreenBtn.style.opacity = '1';
-            fullscreenBtn.style.pointerEvents = 'auto';
-        }, 1000);
+        console.log('Fullscreen button created:', fullscreenBtn);
 
         // Fullscreen function
         function enterFullscreen() {
